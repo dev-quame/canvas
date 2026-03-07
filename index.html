@@ -1,187 +1,282 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quamina Elvin</title>
+    <meta name="description" content="Portfolio of Quamina Elvin, a front-end developer focused on high-performance interfaces, clean UX, and production-ready web experiences.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#081a26">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://canvas-api-9y7i.onrender.com; base-uri 'self'; frame-ancestors 'none'; form-action 'self' https://canvas-api-9y7i.onrender.com; upgrade-insecure-requests">
+    <title>Quamina Elvin | Front-End Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/portfolio.css">
-    <link rel="icon" href="img/favicon-canvas.png" type="image/png" />
+    <link rel="icon" href="img/favicon-canvas.png" type="image/png">
     <script src="js/portfollio.js" defer></script>
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    <nav class="nav" id="nav">
-        <div class="page-header"><strong>Quamina <span>E</span></strong></div>
-        <button class="hamburger" id="hamburger">
-            <span></span>
-        </button>
-        <div class="info">
-            <ul class="navList">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <div class="theme">
-                    <img src="img/sun.svg" alt="light theme" class="light-icon">
-                    <img src="img/moon.svg" alt="dark theme" class="dark-icon">
-                </div>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <div class="overlay" id="overlay" hidden></div>
+
+    <header class="site-header" id="home">
+        <nav class="nav wrapper" id="nav" aria-label="Primary navigation">
+            <a class="brand" href="#home" aria-label="Go to home">
+                Quamina <span>E</span>
+            </a>
+
+            <button class="hamburger" id="hamburger" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+                <span></span>
+            </button>
+
+            <ul class="nav-list" id="primaryNav">
+                <li><a class="nav-link" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#about">About</a></li>
+                <li><a class="nav-link" href="#projects">Projects</a></li>
+                <li><a class="nav-link" href="#contact">Contact</a></li>
+                <li>
+                    <button class="theme-toggle theme" id="themeToggle" type="button" aria-pressed="true">
+                        <img src="img/sun.svg" alt="" aria-hidden="true" class="light-icon">
+                        <img src="img/moon.svg" alt="" aria-hidden="true" class="dark-icon">
+                        <span class="theme-label">Switch theme</span>
+                    </button>
+                </li>
             </ul>
-        </div>
-    </nav>
-    <div class="overlay" id="overlay"></div>
-    <header class="header" id="home">
-        <div class="hero-inner">
-            <h1>Quamina Elvin</h1>
+        </nav>
 
-            <div class="typeWritter">
-                <span class="typing" id="typing"></span>
-                <span class="cursor">|</span>
-            </div>
-
-            <p class="subtitle">
-                Front-end developer focused on clarity, performance, and real-world usability.
+        <div class="hero wrapper">
+            <p class="eyebrow">Full-stack web developer</p>
+            <h1>Timeless web products built for business outcomes.</h1>
+            <p class="hero-subtitle">
+                I design and build classic, durable websites and applications with strong front-end UX and dependable back-end foundations.
+                The focus is long-term value: robust architecture, clear user journeys, and performance that holds up.
             </p>
 
-            <div class="header-btn">
-                <a href="#projects" class="primary">Selected Projects</a>
-                <a href="#about" class="secondary">About</a>
+            <p class="typewriter" aria-live="polite">
+                <span id="typing"></span>
+                <span class="cursor" aria-hidden="true">|</span>
+            </p>
+
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Start a Project</a>
             </div>
+
+            <ul class="hero-pillars" aria-label="Core value pillars">
+                <li>Classic design direction</li>
+                <li>Full-stack execution</li>
+                <li>Production-grade quality</li>
+            </ul>
+
+            <p class="hero-note">Available for freelance work, long-term gigs, and product collaborations.</p>
         </div>
     </header>
-    <section class="about" id="about">
-        <div class="container">
-            <h2> Focus</h2>
-            <div class="about-info">
-                <div class="cat">
-                    <p>I build fast, user friendly websites using modern tools like React and Tailwind CSS, 
-                        backed by a strong foundation in vanilla JavaScript, CSS, and HTML. I believe mastering 
-                        the fundamentals is essential for creating robust, and performant solutions. Whether it's a 
-                        dynamic React application or a custom built site, my focus is on delivering functional, 
-                        polished experiences tailored to each client's needs.</p>
-                     <a href="#contact">Get In Touch</a>
+
+    <main id="main-content">
+        <section class="section about" id="about">
+            <div class="wrapper about-grid">
+                <div class="about-panel reveal">
+                    <p class="section-kicker">Focus</p>
+                    <h2>Built for clarity, speed, and outcomes.</h2>
+                    <p>
+                        I build complete web products from interface to API, using a modern stack backed by strong fundamentals.
+                        My default approach is practical and timeless: clean architecture, clear UX, and features that age well.
+                    </p>
+                    <p>
+                        Whether I am shipping a React front-end, designing a conversion-focused marketing site, or integrating back-end services,
+                        I prioritize maintainability, accessibility, and business impact.
+                    </p>
+                    <a href="#contact" class="text-link">Let us build something</a>
                 </div>
-                <div class="ring-animation">
-                    <div class="skills ">
-                        <div class="row">
-                            <div class="box html">HTML</div>
-                            <div class="box css">CSS</div>
+
+                <aside class="about-card reveal" aria-label="Skills and strengths">
+                    <h3>Core stack</h3>
+                    <ul class="skill-cloud">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>Tailwind</li>
+                        <li>Responsive UX</li>
+                        <li>Performance</li>
+                        <li>Accessibility</li>
+                    </ul>
+
+                    <h3>Working style</h3>
+                    <ul class="strength-list">
+                        <li>Production-ready interfaces</li>
+                        <li>Design consistency across breakpoints</li>
+                        <li>Clean architecture and maintainable code</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section studio" id="studio">
+            <div class="wrapper studio-grid">
+                <div class="studio-panel reveal">
+                    <p class="section-kicker">Product studio</p>
+                    <h2>Some projects are built to be acquired.</h2>
+                    <p>
+                        Beyond client builds, I also develop complete project products that can be adapted and launched by businesses.
+                        This is intentionally subtle in the portfolio, but it is a real offering.
+                    </p>
+                    <ul class="studio-list">
+                        <li>Solid architecture and clean codebase handover</li>
+                        <li>Fast customization for your brand and workflow</li>
+                        <li>Launch support and technical guidance</li>
+                    </ul>
+                </div>
+
+                <aside class="studio-card reveal" aria-label="Project acquisition flow">
+                    <h3>Acquisition flow</h3>
+                    <ol class="studio-steps">
+                        <li>Select a project concept aligned to your business goal.</li>
+                        <li>I tailor features, branding, and data flow to your use case.</li>
+                        <li>You receive a launch-ready product with transition support.</li>
+                    </ol>
+                    <a href="#contact" class="btn btn-secondary">Discuss a project acquisition</a>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section projects" id="projects">
+            <div class="wrapper">
+                <header class="section-head">
+                    <p class="section-kicker">Selected work</p>
+                    <h2>Projects that solve real user needs.</h2>
+                    <p>
+                        A sample of interfaces and products I designed and built, each focused on user experience,
+                        responsiveness, and practical execution. Some are also structured to be customized and acquired.
+                    </p>
+                </header>
+
+                <div class="projects-grid">
+                    <article class="project-card card reveal">
+                        <a href="musaChops.html" target="_blank" rel="noopener noreferrer" class="project-image-link">
+                            <img src="img/foodUsing.png" alt="MusaChops restaurant landing page preview" loading="lazy" decoding="async">
+                        </a>
+                        <div class="project-content">
+                            <span class="project-badge">Acquisition-ready</span>
+                            <h3>MusaChops</h3>
+                            <p>A restaurant landing page with focused visual hierarchy and clear call-to-action flow.</p>
+                            <a href="musaChops.html" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
                         </div>
-                        <div class="row2">
-                            <div class="box js">JS</div>
-                            <div class="box uiUx"><img src="img/logo192.svg" alt="a react logo"></div>
+                    </article>
+
+                    <article class="project-card card reveal">
+                        <a href="allInOneBarca.html" target="_blank" rel="noopener noreferrer" class="project-image-link">
+                            <img src="img/barcaUsing.png" alt="Barca4L football blog preview" loading="lazy" decoding="async">
+                        </a>
+                        <div class="project-content">
+                            <span class="project-badge">Content platform</span>
+                            <h3>Barca4L</h3>
+                            <p>A football blog platform structured for readability, content flow, and recurring engagement.</p>
+                            <a href="allInOneBarca.html" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
                         </div>
-                    </div>
+                    </article>
+
+                    <article class="project-card card reveal">
+                        <a href="https://lepigeonvoyou.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
+                            <img src="img/react-restaurant.png" alt="Le Pigeon Voyou React project preview" loading="lazy" decoding="async">
+                        </a>
+                        <div class="project-content">
+                            <span class="project-badge">React build</span>
+                            <h3>Le Pigeon Voyou</h3>
+                            <p>A React-based restaurant experience with bold branding and smooth user flow.</p>
+                            <a href="https://lepigeonvoyou.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card card reveal">
+                        <a href="https://realcryptotracker.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
+                            <img src="img/crypto-tracker.png" alt="Crypto Tracker app preview" loading="lazy" decoding="async">
+                        </a>
+                        <div class="project-content">
+                            <span class="project-badge">Data product</span>
+                            <h3>Crypto Tracker</h3>
+                            <p>A real-time React app for monitoring cryptocurrency prices with a clean data-first interface.</p>
+                            <a href="https://realcryptotracker.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="projects" id="projects">
-        <div class="container2">
-            <header>
-                <h2>My Projects</h2>
-                <p>A showcase of my recent projects</p>
-            </header>
-            <div class="projects-container">
-                <div class="card">
-                    <div class="img-container">
-                        <a href="musaChops.html"><img src="img/foodUsing.png" alt="work 1"></a>
-                        <div class="img-overlay"></div>
-                    </div>
-                    <div class="card-text">
-                        <h3>musaChops</h3>
-                        <p>A food restaurant landing page</p>
-                        <a href="musaChops.html" target="_blank">View Project →</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="img-container">
-                        <a href="allInOneBarca.html"><img src="img/barcaUsing.png" alt="picture of my blog site"></a>
-                        <div class="img-overlay"></div>
-                    </div>
-                    <div class="card-text">
-                        <h3>Barca4L</h3>
-                        <p>A football blog</p>
-                        <a href="allInOneBarca.html" target="_blank">View Project →</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="img-container">
-                        <a href="https://lepigeonvoyou.netlify.app/"><img src="img/react-restaurant.png" alt="a picture of my portfolio site"></a>
-                        <div class="img-overlay"></div>
-                    </div>
-                    <div class="card-text">
-                        <h3>Le Pigeon Voyou</h3>
-                        <p>A restaurant landing page with react</p>
-                        <a href="https://lepigeonvoyou.netlify.app/" target="_blank">View Project →</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="img-container">
-                        <a href="https://realcryptotracker.netlify.app/"><img src="img/crypto-tracker.png" alt="a picture of my portfolio site"></a>
-                        <div class="img-overlay"></div>
-                    </div>
-                    <div class="card-text">
-                        <h3>Crypto Tracker</h3>
-                        <p>A real-time cryptocurrency tracking app with react</p>
-                        <a href="https://realcryptotracker.netlify.app/" target="_blank">View Project →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="contact" id="contact">
-        <div class="container3">
-            <header>
-                <h2>Get in Touch</h2>
-                <p>Have a project in mind?, send me a message let's build something amazing</p>
-            </header>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <div class="icon"><i><img src="img/at.svg" alt=""></i></div>
-                        <div class="contact-desc">
-                            <h4>Email</h4>
-                            <p>quaminaelvin@gmail.com</p>
+        </section>
+
+        <section class="section contact" id="contact">
+            <div class="wrapper contact-grid">
+                <div class="contact-panel reveal">
+                    <p class="section-kicker">Get in touch</p>
+                    <h2>Have a project idea?</h2>
+                    <p>
+                        Share your vision, timeline, and goals. I will help you shape it into a clean and effective digital product.
+                    </p>
+
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <div class="icon"><img src="img/at.svg" alt="" aria-hidden="true"></div>
+                            <div>
+                                <h3>Email</h3>
+                                <a href="mailto:quaminaelvin@gmail.com">quaminaelvin@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="icon"><img src="img/phone.svg" alt="" aria-hidden="true"></div>
+                            <div>
+                                <h3>Phone</h3>
+                                <a href="tel:+233542016816">+233 54 2016 816</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="icon"><i><img src="img/phone.svg" alt=""></i></div>
-                        <div class="contact-desc">
-                            <h4>Phone</h4>
-                            <p>(233) 54 2016 816</p>
-                        </div>
-                    </div>
+
                     <div class="socials">
-                        <h4>Me On</h4>
-                        <div class="socials-links">
-                            <a href="https://www.linkedin.com/in/elvin-quamina-adjei-b1801538a" target="_blank"><img src="img/linkedin-logo.svg" alt="follow me on linkedin"></a>
-                            <a href="https://x.com/home" target="_blank"><img src="img/twitter-logo.svg" alt="follow me on twitter"></a>
+                        <h3>Connect</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/elvin-quamina-adjei-b1801538a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <img src="img/linkedin-logo.svg" alt="" aria-hidden="true">
+                            </a>
+                            <a href="https://x.com/home" target="_blank" rel="noopener noreferrer" aria-label="X">
+                                <img src="img/twitter-logo.svg" alt="" aria-hidden="true">
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="send-message">
-                    <h3>Send a Message</h3>
-                    <form id="contactForm" name="message-form" method="post">
-                        <p class="hidden"><label> Not to be filled <input type="text" name="bot-field"></label></p>
-                        <label>Full Name<input required name="name" id="name" type="text" placeholder="Your name"></label>
-                        <label>Email Address <input required name="email" id="email" type="email" placeholder="your@email.com"></label>
-                        <label>Subject <input required name="subject" id="subject" type="text" placeholder="Project Inquiry"></label>
-                        <label>Message <textarea required name="message" id="message" rows="8" placeholder="Tell me about your project..."></textarea></label>
-                        <button type="submit" id="submitBtn">Send Message ⇛</button>
-                        <p id="status" aria-live="polite"></p>
+
+                <div class="form-panel reveal">
+                    <h2>Send a message</h2>
+                    <form id="contactForm" name="message-form" method="post" autocomplete="on">
+                        <p class="hidden-field">
+                            <label>Leave this field empty
+                                <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+                            </label>
+                        </p>
+
+                        <label for="name">Full name</label>
+                        <input required id="name" name="name" type="text" minlength="2" maxlength="80" placeholder="Your name" autocomplete="name">
+
+                        <label for="email">Email address</label>
+                        <input required id="email" name="email" type="email" maxlength="120" placeholder="your@email.com" autocomplete="email">
+
+                        <label for="subject">Subject</label>
+                        <input required id="subject" name="subject" type="text" minlength="3" maxlength="120" placeholder="Project inquiry" autocomplete="organization-title">
+
+                        <label for="message">Message</label>
+                        <textarea required id="message" name="message" rows="7" minlength="20" maxlength="1500" placeholder="Tell me about your project..."></textarea>
+
+                        <button type="submit" id="submitBtn">Send Message -&gt;</button>
+                        <p id="status" role="status" aria-live="polite"></p>
                     </form>
                 </div>
             </div>
-    </section>
-    <footer class="footer">
-        <p>© 2025 quaminastudio <img src="img/heart-straight.svg" alt=""></p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Quamina Studio</p>
     </footer>
 </body>
 </html>

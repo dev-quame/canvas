@@ -1,62 +1,156 @@
-const form = document.getElementById("contactForm");
-const status = document.getElementById("status");
-const submitBtn = document.getElementById("submitBtn");
+(function () {
+  "use strict";
 
-if (!form || !status || !submitBtn) {
-  console.error("Form elements not found");
-  throw new Error("Form setup failed");
-}
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("status");
+  const submitBtn = document.getElementById("submitBtn");
 
-let isSubmitting = false;
+  if (!form || !status || !submitBtn) {
+    return;
+  }
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  const endpoint = "https://canvas-api-9y7i.onrender.com/api/forms";
+  const submitLabel = "Send Message ->";
+  const loadingLabel = "Sending...";
+  const timeoutMs = 12000;
 
-  if (isSubmitting) return;
-  isSubmitting = true;
-
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Sending…";
-  status.textContent = "Sending your message...";
-  status.className = "loading";
-
-  const data = {
-    name: document.getElementById("name").value.trim(),
-    email: document.getElementById("email").value.trim(),
-    subject: document.getElementById("subject").value.trim(),
-    message: document.getElementById("message").value.trim(),
+  const fields = {
+    name: document.getElementById("name"),
+    email: document.getElementById("email"),
+    subject: document.getElementById("subject"),
+    message: document.getElementById("message"),
   };
 
-  try {
-    const res = await fetch("https://canvas-api-9y7i.onrender.com/api/forms", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+  let isSubmitting = false;
 
-    const result = await res.json();
-    if (!res.ok) throw new Error(result?.error || "Server error");
+  function cleanText(value) {
+    return value.replace(/[\u0000-\u001F\u007F]/g, "").replace(/\s+/g, " ").trim();
+  }
 
-    status.textContent = "Thank You! Message sent successfully!";
-    status.className = "success";
-    form.reset();
-    submitBtn.disabled = true;
+  function setStatus(type, message) {
+    status.textContent = message;
+    status.className = type;
+  }
 
-    setTimeout(() => {
+  function updateButtonState() {
+    submitBtn.disabled = isSubmitting || !form.checkValidity();
+  }
+
+  function validatePayload(payload) {
+    if (payload.name.length < 2 || payload.name.length > 80) {
+      return "Please enter a valid name (2-80 characters).";
+    }
+
+    if (payload.subject.length < 3 || payload.subject.length > 120) {
+      return "Please enter a valid subject (3-120 characters).";
+    }
+
+    if (payload.message.length < 20 || payload.message.length > 1500) {
+      return "Please write a message between 20 and 1500 characters.";
+    }
+
+    return "";
+  }
+
+  async function parseResponse(response) {
+    const contentType = response.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) {
+      return {};
+    }
+
+    try {
+      return await response.json();
+    } catch (error) {
+      return {};
+    }
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+
+    const botField = form.querySelector('input[name="bot-field"]');
+    if (botField && botField.value.trim() !== "") {
+      form.reset();
+      setStatus("success", "Thanks. Message submitted.");
+      updateButtonState();
+      return;
+    }
+
+    const payload = {
+      name: cleanText(fields.name?.value || ""),
+      email: cleanText(fields.email?.value || "").toLowerCase(),
+      subject: cleanText(fields.subject?.value || ""),
+      message: cleanText(fields.message?.value || ""),
+    };
+
+    const validationError = validatePayload(payload);
+    if (validationError) {
+      setStatus("error", validationError);
+      return;
+    }
+
+    isSubmitting = true;
+    submitBtn.textContent = loadingLabel;
+    setStatus("loading", "Sending your message...");
+    updateButtonState();
+
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        mode: "cors",
+        credentials: "omit",
+        referrerPolicy: "strict-origin-when-cross-origin",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+
+      const result = await parseResponse(response);
+      if (!response.ok) {
+        const fallbackMessage =
+          response.status === 429
+            ? "Too many requests right now. Please try again in a moment."
+            : "Unable to send your message right now. Please try again.";
+        throw new Error(result.error || fallbackMessage);
+      }
+
+      form.reset();
+      setStatus("success", "Thanks, your message was sent successfully.");
+      window.setTimeout(() => {
+        status.textContent = "";
+        status.className = "";
+      }, 5000);
+    } catch (error) {
+      if (error.name === "AbortError") {
+        setStatus("error", "Request timed out. Please check your connection and try again.");
+      } else {
+        setStatus("error", error.message || "Network error. Please try again.");
+      }
+    } finally {
+      window.clearTimeout(timeoutId);
+      isSubmitting = false;
+      submitBtn.textContent = submitLabel;
+      updateButtonState();
+    }
+  });
+
+  form.addEventListener("input", () => {
+    if (status.className === "error") {
       status.textContent = "";
       status.className = "";
-    }, 5000);
+    }
+    updateButtonState();
+  });
 
-  } catch (err) {
-    console.error(err);
-    status.textContent = err.message || "Network error. Please try again.";
-    status.className = "error";
-  } finally {
-    isSubmitting = false;
-    submitBtn.textContent = "Send Message ⇛";
-  }
-});
-
-form.addEventListener("input", () => {
-  submitBtn.disabled = !form.checkValidity();
-});
+  updateButtonState();
+})();

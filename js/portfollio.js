@@ -1,117 +1,256 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const typingEl = document.getElementById('typing');
-    const text = [
-        "Simplicity that doesn’t break",
-        "Interfaces built to hold up",
-        "Clarity backed by structure."
-    ];
+(function () {
+  "use strict";
 
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 50;
-    let eraseSpeed = 25;
-    let pauseTime = 1500;
+  document.addEventListener("DOMContentLoaded", () => {
+    const root = document.documentElement;
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const hamburger = document.getElementById("hamburger");
+    const navList = document.getElementById("primaryNav");
+    const overlay = document.getElementById("overlay");
+    const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+    const sections = navLinks
+      .map((link) => {
+        const id = link.getAttribute("href")?.replace("#", "");
+        return id ? document.getElementById(id) : null;
+      })
+      .filter(Boolean);
+    const typingEl = document.getElementById("typing");
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const themeStorageKey = "portfolio_theme";
 
-    function typerWritter () {
-        const currentText = text[textIndex];
+    const isMobileViewport = () => window.matchMedia("(max-width: 900px)").matches;
 
-        if(!isDeleting) {
-            typingEl.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-
-            if(charIndex === currentText.length) {
-                isDeleting = true;
-                setTimeout(typerWritter, pauseTime);
-                return;
-            }
-        }else {
-            typingEl.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-
-            if(charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % text.length;
-            }
-        }
-
-        const speed = isDeleting ? eraseSpeed : typingSpeed;
-        setTimeout(typerWritter, speed);
+    function readStoredTheme() {
+      try {
+        return localStorage.getItem(themeStorageKey);
+      } catch (error) {
+        return null;
+      }
     }
-    setTimeout(typerWritter, 700);
 
-    //for the hamburger
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.querySelector('#nav .info .navList');
-    const overlay = document.getElementById('overlay');
+    function storeTheme(theme) {
+      try {
+        localStorage.setItem(themeStorageKey, theme);
+      } catch (error) {
+        // Ignore storage errors in restricted/private contexts.
+      }
+    }
 
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        overlay.classList.toggle('active');
-        hamburger.classList.toggle('active');
+    function applyTheme(theme) {
+      const safeTheme = theme === "light" ? "light" : "dark";
+      root.setAttribute("data-theme", safeTheme);
 
-        if(nav.classList.contains('active')) {
-            document.body.style.overflow = 'hidden'
-        }else {
-            document.body.style.overflow = "";
+      if (themeToggle) {
+        const isDark = safeTheme === "dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        const label = themeToggle.querySelector(".theme-label");
+        if (label) {
+          label.textContent = isDark ? "Switch to light theme" : "Switch to dark theme";
         }
-    });
-    //start clearing
-    overlay.addEventListener('click', () => {
-        nav.classList.remove('active');
-        hamburger.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-    //for links clearing
-    const navLinks = document.querySelectorAll('#nav .info .navList a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            hamburger.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        })
-    })
-    //for the esc
-    document.addEventListener('keydown', (event) => {
-        if(event.key === 'Escape' && nav.classList.contains('active')) {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = "";
+      }
+
+      if (themeMeta) {
+        themeMeta.setAttribute("content", safeTheme === "dark" ? "#081a26" : "#f3f7fb");
+      }
+    }
+
+    const storedTheme = readStoredTheme();
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme =
+      storedTheme === "light" || storedTheme === "dark"
+        ? storedTheme
+        : systemPrefersDark
+          ? "dark"
+          : "light";
+    applyTheme(initialTheme);
+
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = root.getAttribute("data-theme") === "light" ? "light" : "dark";
+        const nextTheme = currentTheme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        storeTheme(nextTheme);
+      });
+    }
+
+    function setOverlayActive(isActive) {
+      if (!overlay) return;
+      overlay.hidden = !isActive;
+      overlay.classList.toggle("active", isActive);
+    }
+
+    function closeMenu() {
+      if (!navList || !hamburger) return;
+      navList.classList.remove("open");
+      hamburger.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+      setOverlayActive(false);
+      body.classList.remove("nav-open");
+    }
+
+    function openMenu() {
+      if (!navList || !hamburger) return;
+      navList.classList.add("open");
+      hamburger.classList.add("active");
+      hamburger.setAttribute("aria-expanded", "true");
+      setOverlayActive(true);
+      body.classList.add("nav-open");
+    }
+
+    if (hamburger && navList) {
+      hamburger.addEventListener("click", () => {
+        const isOpen = navList.classList.contains("open");
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
         }
-    })
-})
+      });
+    }
 
-// Theme toggle functionality
-const themeToggle = document.querySelector('.theme');
-const currentTheme = localStorage.getItem('theme');
+    if (overlay) {
+      overlay.addEventListener("click", closeMenu);
+    }
 
-if (currentTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-}
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (isMobileViewport()) {
+          closeMenu();
+        }
+      });
+    });
 
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-});
-
-const observer = new IntersectionObserver(
-  (entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-        obs.unobserve(entry.target); // 🔥 KEY LINE
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && navList && navList.classList.contains("open")) {
+        closeMenu();
       }
     });
-  },
-  { threshold: 0.2 }
-);
 
-document.querySelectorAll('.card').forEach(el => {
-  observer.observe(el);
-});
+    window.addEventListener("resize", () => {
+      if (!isMobileViewport()) {
+        closeMenu();
+      }
+    });
+
+    function setActiveLink(sectionId) {
+      navLinks.forEach((link) => {
+        const target = link.getAttribute("href")?.replace("#", "");
+        const isActive = target === sectionId;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    setActiveLink("home");
+
+    if ("IntersectionObserver" in window && sections.length > 0) {
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          let candidate = null;
+
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (!candidate || entry.intersectionRatio > candidate.intersectionRatio) {
+                candidate = entry;
+              }
+            }
+          });
+
+          if (candidate && candidate.target.id) {
+            setActiveLink(candidate.target.id);
+          }
+        },
+        {
+          root: null,
+          threshold: [0.2, 0.35, 0.55, 0.75],
+          rootMargin: "-42% 0px -48% 0px",
+        }
+      );
+
+      sections.forEach((section) => sectionObserver.observe(section));
+    }
+
+    if (typingEl) {
+      const phrases = [
+        "Classic interfaces built to last.",
+        "Full-stack products with clear structure.",
+        "Robust UX that drives real action.",
+      ];
+
+      if (reduceMotion) {
+        typingEl.textContent = phrases[0];
+      } else {
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        const typeDelay = 62;
+        const deleteDelay = 34;
+        const holdDelay = 1450;
+
+        const runTyping = () => {
+          const currentPhrase = phrases[phraseIndex];
+
+          if (!deleting) {
+            charIndex += 1;
+            typingEl.textContent = currentPhrase.slice(0, charIndex);
+
+            if (charIndex >= currentPhrase.length) {
+              deleting = true;
+              setTimeout(runTyping, holdDelay);
+              return;
+            }
+
+            setTimeout(runTyping, typeDelay);
+            return;
+          }
+
+          charIndex -= 1;
+          typingEl.textContent = currentPhrase.slice(0, Math.max(0, charIndex));
+
+          if (charIndex <= 0) {
+            deleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(runTyping, 180);
+            return;
+          }
+
+          setTimeout(runTyping, deleteDelay);
+        };
+
+        setTimeout(runTyping, 500);
+      }
+    }
+
+    const revealItems = Array.from(document.querySelectorAll(".reveal"));
+
+    if (revealItems.length > 0) {
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      } else {
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.18,
+            rootMargin: "0px 0px -10% 0px",
+          }
+        );
+
+        revealItems.forEach((item) => revealObserver.observe(item));
+      }
+    }
+  });
+})();

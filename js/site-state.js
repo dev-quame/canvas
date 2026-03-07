@@ -1,169 +1,112 @@
-
 (function () {
-  const DEBUG = true;
-  function log(...args) {
-    if (DEBUG) console.log('[Site]', ...args);
-  }
+  "use strict";
 
-  const keys = {
-    scroll: 'barca_scroll',
-    hash: 'barca_hash',
-    activeNav: 'barca_active_nav'
+  const storageKeys = {
+    scroll: "barca_scroll",
+    hash: "barca_hash",
+    activeNav: "barca_active_nav",
   };
 
-  // Save current page state before opening an article
   function saveMainPageState(href) {
-    if (!href.includes('blogPost.html')) return;
+    if (!href.includes("blogPost.html")) return;
 
     try {
       const scrollY = window.scrollY || window.pageYOffset || 0;
-      const currentHash = location.hash || '';
-      log('Saving state before article:', { scrollY, currentHash });
+      const currentHash = location.hash || "";
 
-      // Save scroll and hash state
-      sessionStorage.setItem(keys.scroll, String(scrollY));
-      sessionStorage.setItem(keys.hash, currentHash);
+      sessionStorage.setItem(storageKeys.scroll, String(scrollY));
+      sessionStorage.setItem(storageKeys.hash, currentHash);
 
-      // Save active nav state
-      const active = document.querySelector('.nav-link.active');
-      if (active) {
-        const activeNav = active.getAttribute('data-nav');
-        if (activeNav) {
-          log('Saving active nav:', activeNav);
-          sessionStorage.setItem(keys.activeNav, activeNav);
-        }
+      const activeNav = document.querySelector(".nav-link.active")?.getAttribute("data-nav");
+      if (activeNav) {
+        sessionStorage.setItem(storageKeys.activeNav, activeNav);
       }
-    } catch (err) {
-      console.warn('[Site] Error saving state:', err);
+    } catch (error) {
+      // Ignore storage errors.
     }
   }
 
   function applyPendingNavOnArticle() {
+    if (!document.querySelector(".blog-container")) return;
+
     try {
-      if (!document.querySelector('.blog-container')) {
-        log('Not an article page, skipping nav sync');
-        return;
-      }
+      const pendingNav = sessionStorage.getItem(storageKeys.activeNav);
+      if (!pendingNav) return;
 
-      const pending = sessionStorage.getItem(keys.activeNav);
-      if (!pending) {
-        log('No pending nav to apply on article');
-        return;
-      }
-
-      log('Article page: applying pending nav:', pending);
-      document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-      document.querySelectorAll('.nav-link[data-nav="' + pending + '"]').forEach(n => n.classList.add('active'));
-
-      log('Nav applied (keeping for back navigation)');
-    } catch (e) {
-      console.warn('[Site] Error applying article nav:', e);
+      document.querySelectorAll(".nav-link[data-nav]").forEach((link) => {
+        const isActive = link.getAttribute("data-nav") === pendingNav;
+        link.classList.toggle("active", isActive);
+      });
+    } catch (error) {
+      // Ignore storage errors.
     }
   }
 
-  // Restore stored scroll/hash/nav on the main page
   function restoreMainPageState() {
+    if (!document.querySelector(".main-container")) return;
+
     try {
-      // C if we're on the main page
-      if (!document.querySelector('.main-container')) {
-        log('Not on main page, skipping restore');
-        return;
-      }
+      const savedHash = sessionStorage.getItem(storageKeys.hash);
+      const savedScroll = parseInt(sessionStorage.getItem(storageKeys.scroll) || "0", 10);
+      const pendingNav = sessionStorage.getItem(storageKeys.activeNav);
 
-      log('Main page: attempting state restore');
-
-      // Gather all saved state
-      const savedHash = sessionStorage.getItem(keys.hash);
-      const savedScroll = parseInt(sessionStorage.getItem(keys.scroll) || '0', 10);
-      const pendingNav = sessionStorage.getItem(keys.activeNav);
-      log('Found stored values:', { savedHash, savedScroll, pendingNav });
-
-      // restore nav state
       if (pendingNav) {
-        log('Restoring navigation to:', pendingNav);
-        try {
-          // Clear existing states
-          document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-          document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+        document.querySelectorAll(".page").forEach((page) => page.classList.remove("active"));
+        document.querySelectorAll(".nav-link[data-nav]").forEach((link) => link.classList.remove("active"));
 
-          // Activate target page and nav links
-          const targetPage = document.getElementById(pendingNav);
-          if (targetPage) {
-            log('Activating page:', pendingNav);
-            targetPage.classList.add('active');
-          }
+        const targetPage = document.getElementById(pendingNav);
+        if (targetPage) targetPage.classList.add("active");
+        document.querySelectorAll(`.nav-link[data-nav="${pendingNav}"]`).forEach((link) => {
+          link.classList.add("active");
+        });
 
-          const navLinks = document.querySelectorAll('.nav-link[data-nav="' + pendingNav + '"]');
-          navLinks.forEach(n => n.classList.add('active'));
-          log('Activated', navLinks.length, 'nav links');
-
-          // Sync layout visibility
-          if (typeof hideMainWrapper === 'function') {
-            log('Syncing main wrapper visibility');
-            try { hideMainWrapper(); } catch (e) {}
-          }
-
-          sessionStorage.removeItem(keys.activeNav);
-          log('Cleared active nav after applying');
-        } catch (e) {
-          console.warn('[Site] Error activating nav:', e);
+        if (typeof hideMainWrapper === "function") {
+          hideMainWrapper();
         }
+
+        sessionStorage.removeItem(storageKeys.activeNav);
       }
 
-      // restore the hash if needed
       if (savedHash) {
-        log('Restoring hash:', savedHash);
         if (savedHash !== location.hash) {
           location.hash = savedHash;
         }
-        sessionStorage.removeItem(keys.hash);
+        sessionStorage.removeItem(storageKeys.hash);
       }
 
-      // 3 restore scroll position after a brief delay
       if (!Number.isNaN(savedScroll) && savedScroll > 0) {
-        log('Will restore scroll to:', savedScroll);
-        setTimeout(function () {
-          try {
-            log('Restoring scroll position...');
-            window.scrollTo({ top: savedScroll, left: 0, behavior: 'instant' });
-          } catch (e) {
-            console.warn('[Site] Fallback scroll:', e);
-            window.scrollTo(0, savedScroll);
-          }
-          sessionStorage.removeItem(keys.scroll);
-          log('Scroll restored and cleared');
-        }, 100); 
+        setTimeout(() => {
+          window.scrollTo({ top: savedScroll, left: 0, behavior: "auto" });
+          sessionStorage.removeItem(storageKeys.scroll);
+        }, 100);
       }
-    } catch (err) {
-      console.warn('[Site] Error in restore:', err);
+    } catch (error) {
+      // Ignore storage errors.
     }
   }
 
-  // Click handler to save state before article navigation
-  document.addEventListener('click', function (e) {
-    const a = e.target.closest && e.target.closest('a');
-    if (!a) return;
-    try {
-      const href = a.getAttribute('href') || '';
-      if (href.indexOf('blogPost.html') === 0 || href.includes('blogPost.html?')) {
-        // Only save state for normal clicks (not them middle click/ctrl+click)
-        if (e.button === 0 && !e.ctrlKey && !e.metaKey) {
-          saveMainPageState(href);
-        }
-      }
-    } catch (err) {
-      console.warn('[Site] Error in click handler:', err);
-    }
-  }, { capture: true }); 
+  document.addEventListener(
+    "click",
+    (event) => {
+      const anchor = event.target.closest && event.target.closest("a");
+      if (!anchor) return;
 
-  window.addEventListener('DOMContentLoaded', function() {
-    log('DOMContentLoaded - syncing state...');
+      const href = anchor.getAttribute("href") || "";
+      if (!href.includes("blogPost.html")) return;
+
+      if (event.button === 0 && !event.ctrlKey && !event.metaKey) {
+        saveMainPageState(href);
+      }
+    },
+    { capture: true }
+  );
+
+  window.addEventListener("DOMContentLoaded", () => {
     applyPendingNavOnArticle();
     restoreMainPageState();
   });
 
-  window.addEventListener('pageshow', function (event) {
-    log('pageshow event - syncing state... (persisted:', event.persisted, ')');
+  window.addEventListener("pageshow", () => {
     applyPendingNavOnArticle();
     restoreMainPageState();
   });

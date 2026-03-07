@@ -3,44 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barca 4L - Article</title>
+    <meta name="description" content="Barca4L article page with full story details, read time, and sharing options.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#0b1030">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests">
+    <title>Barca4L | Article</title>
+    <link rel="icon" href="img/barcaLogo.jpeg" type="image/jpeg">
     <link rel="stylesheet" href="styles/newbarcablog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="js/barcablog.js" defer></script>
     <script src="js/site-state.js" defer></script>
 </head>
 <body>
-   <header data-header class="header-container">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <h1 id="page-name"><a class="nav-link active" data-nav="home" href="#home">Barca<span>&nbsp;4L</span></a></h1>
+    <header data-header class="header-container">
+        <h1 id="page-name">
+            <a class="nav-link active" data-nav="home" href="#home">Barca<span>&nbsp;4L</span></a>
+        </h1>
 
-      <ul id="main-menu">
-        <li><a class="nav-link" data-nav="latest" href="#latest">Latest</a></li>
-        <li><a class="nav-link" data-nav="topStories" href="#topStories">Top News</a></li>
-        <li><a class="nav-link" data-nav="games" href="#games">Games</a></li>
-        <li><a class="nav-link" data-nav="squad" href="#squad">Squad</a></li>
-        <li><a class="nav-link" data-nav="transfers" href="#transfers">Transfers</a></li>
-      </ul>
+        <nav aria-label="Primary">
+            <ul id="main-menu">
+                <li><a class="nav-link" data-nav="latest" href="#latest">Latest</a></li>
+                <li><a class="nav-link" data-nav="topStories" href="#topStories">Top News</a></li>
+                <li><a class="nav-link" data-nav="games" href="#games">Games</a></li>
+                <li><a class="nav-link" data-nav="squad" href="#squad">Squad</a></li>
+                <li><a class="nav-link" data-nav="transfers" href="#transfers">Transfers</a></li>
+            </ul>
+        </nav>
 
-      <ul id="user-menu">
-        <li id="menu-search" role="button" tabindex="0" aria-label="Open search" title="Search">
-          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-        </li>
-        <li id="join"><a href="#join">Join</a></li>
-      </ul>
-      
-      <div class="search-overlay">
-        <button class="close-search">&times;</button>
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search...">
+        <ul id="user-menu">
+            <li>
+                <button id="menu-search" type="button" aria-controls="searchOverlay" aria-expanded="false" aria-label="Open search" title="Search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                </button>
+            </li>
+            <li id="join"><a href="allInOneBarca.html#join">Join</a></li>
+        </ul>
+
+        <div class="search-overlay" id="searchOverlay" hidden>
+            <button class="close-search" type="button" aria-label="Close search">&times;</button>
+            <div class="search-container">
+                <label class="visually-hidden" for="barca-search-input">Search articles</label>
+                <input id="barca-search-input" type="text" class="search-input" placeholder="Search stories, players, and topics...">
+                <div class="search-results" id="search-results" aria-live="polite"></div>
+            </div>
         </div>
-    </div>
-  </header>
+    </header>
 
-    <div class="blog-container">
-        <div class="img-wrapper"><img src="" alt="" class="featured-image" id="article-image"></div>
+    <main id="main-content" class="blog-container">
+        <div class="img-wrapper">
+            <img src="" alt="" class="featured-image" id="article-image">
+        </div>
 
         <div class="blog-content">
+            <p class="article-back">
+                <a href="allInOneBarca.html#latest" aria-label="Go back to main Barca4L page">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to all stories
+                </a>
+            </p>
+
             <div class="blog-meta">
                 <div class="author-info">
                     <div class="author-details">
@@ -50,62 +72,66 @@
                 </div>
                 <div class="read-time" id="read-time"></div>
             </div>
-            <h1 class="blog-title" id="article-title"></h1>
 
-            <main class="blog-body" id="article-content">
-                <p>Okay so this is where the main content for the blog will go. This is just a fun project that I built and I might need to auto generate some more text. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia accusamus aperiam totam delectus dignissimos nisi odio quae deserunt, non repudiandae </p>
-            </main>
+            <h1 class="blog-title" id="article-title">Story title</h1>
 
-            <div class="article-social">
+            <article class="blog-body" id="article-content">
+                <p>
+                    This article page is powered by the selected story from the Barca4L index. Full narrative, context,
+                    and match insights will appear here as the blog grows.
+                </p>
+            </article>
+
+            <section class="article-social">
                 <h3>Share this article</h3>
                 <div class="share-buttons">
-                    <button class="share-btn twitter">
-                        <i class="fa-brands fa-x-twitter"></i> Share on X
+                    <button type="button" class="share-btn twitter">
+                        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i> Share on X
                     </button>
-                    <button class="share-btn facebook">
-                        <i class="fa-brands fa-facebook"></i> Share on Facebook
+                    <button type="button" class="share-btn facebook">
+                        <i class="fa-brands fa-facebook" aria-hidden="true"></i> Share on Facebook
                     </button>
-                    <button class="share-btn whatsapp">
-                        <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+                    <button type="button" class="share-btn whatsapp">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Share on WhatsApp
                     </button>
                 </div>
-            </div>
+            </section>
 
-            <div class="related-articles">
+            <section class="related-articles">
                 <h3>More Barcelona News</h3>
                 <div class="related-grid" id="related-articles">
-                    <p>So looking at adding some more content here...</p>
+                    <p>More related stories will be surfaced here from the latest Barca4L feed.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer-container">
+        <div class="wrapper flex-wrapper">
+            <div class="footer-nav">
+                <h5>Information</h5>
+                <a href="allInOneBarca.html#home">Home</a>
+                <a href="allInOneBarca.html#latest">Latest</a>
+                <a href="allInOneBarca.html#topStories">Top News</a>
+                <a href="allInOneBarca.html#games">Games</a>
+                <a href="allInOneBarca.html#join">Newsletter</a>
+            </div>
+            <div class="footer-media">
+                <h5>Follow Us</h5>
+                <div class="socials">
+                    <a href="https://wa.me/?text=Barca4L" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="mailto:hello@barca4l.com" aria-label="Send us an email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://x.com/fcbarcelona" target="_blank" rel="noopener noreferrer" aria-label="Barcelona on X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/fcbarcelona/" target="_blank" rel="noopener noreferrer" aria-label="Barcelona on Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/fcbarcelona/" target="_blank" rel="noopener noreferrer" aria-label="Barcelona on Facebook"><i class="fa-brands fa-facebook"></i></a>
                 </div>
             </div>
+            <div class="footerLogo">
+                <h5 id="footerLogo-header">FC Barcelona</h5>
+                <div><img src="img/footerLogo.svg" alt="FC Barcelona crest"></div>
+            </div>
         </div>
-    </div>
-    <footer class="footer-container">
-    <div class="wrapper flex-wrapper">
-      <div class="footer-nav">
-        <h5>Information</h5>
-        <a href="#about">About</a>
-        <a href="#about">Advertise</a>
-        <a href="#about">Contact</a>
-        <a href="#about">Privacy and Policy</a>
-        <a href="#FAQ">FAQ</a>
-      </div>
-      <div class="footer-media">
-        <h5>Follow Us</h5>
-        <div class="socials">
-           <a href="#whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-           <a href="#email"><i class="fa-solid fa-envelope"></i></a>
-           <a href="#twitter"><i class="fa-brands fa-x-twitter"></i></a>
-           <a href="#instgram"><i class="fa-brands fa-instagram"></i></a>
-           <a href="#facebook"><i class="fa-brands fa-facebook"></i></a>
-        </div>
-      </div>
-      <div class="footerLogo">
-        <h5 id="footerLogo-header">FC Barcelona</h5>
-        <div><img src="img/footerLogo.svg" alt="Footer Logo" style="max-width:100%;height:auto;"></div>
-      </div>
-    </div>
-    <p class="footer-copy">allBarcaNews © 2024. All rights reserved.</p>
-  </footer>
-  
+        <p class="footer-copy">allBarcaNews &copy; 2026. All rights reserved.</p>
+    </footer>
 </body>
 </html>

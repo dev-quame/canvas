@@ -18,6 +18,22 @@ html {
         scroll-padding-top: 47px;
     }
 }
+.skip-link {
+    position: fixed;
+    top: -100px;
+    left: 1rem;
+    z-index: 2500;
+    background: #111;
+    color: #fff;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: top .2s ease;
+}
+.skip-link:focus {
+    top: 1rem;
+}
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -106,6 +122,10 @@ img {
     @media (width < 400px) {
         top: 25px;
     }
+}
+.hamburger:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
 }
 .header-container.scrolled .hamburger {
     width: 24px;
@@ -201,6 +221,11 @@ nav ul li a:hover {
     color: var(--color-accent);
     transition: var(--transition);
 }
+nav ul li a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
 /*nav ul li a:hover::after {
     width: 100%;
 }*/
@@ -215,10 +240,15 @@ nav ul li a:hover {
     visibility: hidden;
     z-index: 989;
     transition: var(--transition);
+    pointer-events: none;
 }
 .overlay.active {
     visibility: visible;
     opacity: 1;
+    pointer-events: auto;
+}
+.overlay[hidden] {
+    display: none !important;
 }
 .hero {
     height: 100vh;
@@ -712,6 +742,8 @@ nav ul li a:hover {
     background-color: #eeeeeecc;
     cursor: pointer;
     transition: var(--transition);
+    border: 0;
+    padding: 0;
 }
 .special-offers .indicator.active {
     background-color: #fff;
@@ -793,6 +825,15 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     padding-bottom: .5rem;
+}
+.footer-info .contact a {
+    color: #ccc;
+    text-decoration: none;
+}
+.footer-info .contact a:hover,
+.footer-info .contact a:focus-visible {
+    color: #fff;
+    text-decoration: underline;
 }
 .footer-info .contact .contact-logo {
     filter: brightness(0) invert(.7);

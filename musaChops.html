@@ -3,192 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>musaChops Restaurant</title>
+    <meta name="description" content="MusaChops restaurant landing page showcasing menu items, services, and Thursday specials.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#f9f5eb">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests">
+    <title>MusaChops Restaurant</title>
     <link rel="stylesheet" href="styles/musaChops.css">
-    <link rel="icon" href="img/favicon-musaChops.png" type="image/png" />
+    <link rel="icon" href="img/favicon-musaChops.png" type="image/png">
     <script defer src="js/musaChops.js"></script>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <header class="header-container">
-        <div class="logo"><a href="#hero"><img src="img/musaChops.svg" alt="musaChops logo"></a></div>
-        <button class="hamburger" id="hamburger">
+        <div class="logo">
+            <a href="#hero"><img src="img/musaChops.svg" alt="MusaChops logo"></a>
+        </div>
+        <button class="hamburger" id="hamburger" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <nav>
-            <ul>
+        <nav aria-label="Primary navigation">
+            <ul id="primary-nav">
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <div class="overlay" id="overlay"></div>
+        <div class="overlay" id="overlay" hidden></div>
     </header>
+
     <section class="hero" id="hero">
         <div class="hero-text">
-            <h1>Musa<span>Chops</span>, Your Taste Elevated</h1>
-            <p>Your table awaits for a memorable meal, from signature flavors to comforting classics!</p>
+            <h1>Musa<span>Chops</span>, your taste elevated</h1>
+            <p>Your table awaits for a memorable meal, from signature flavors to comforting classics.</p>
             <a href="#menu" class="btn">View Our Menu</a>
-        </div> 
+        </div>
     </section>
-    <main class="main-container">
+
+    <main class="main-container" id="main-content">
         <article class="menu-article" id="menu">
             <header class="article-header">
-                <h2 id="menu">Our Menu</h2>
-                <p>Discover our delicious offerings, crafted with the finest ingredients to satisfy your cravings.</p>
+                <h2>Our Menu</h2>
+                <p>Discover our delicious offerings, crafted with quality ingredients to satisfy every craving.</p>
             </header>
+
             <section class="food-menu">
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/steak with fries.jpeg" alt="picture of steak with fries"></div>
+                    <div class="dish-img"><img src="img/steak with fries.jpeg" alt="Steak with fries" loading="lazy"></div>
                     <div class="dish-info">
                         <h3>Steak with fries</h3>
                         <p>Juicy grilled steak served with crispy fries.</p>
-                        <div class="price">₵ 50.00</div>
+                        <div class="price">GHS 50.00</div>
                     </div>
                 </div>
 
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/pizza2.jpeg" alt="a picture of a pizza"></div>
+                    <div class="dish-img"><img src="img/pizza2.jpeg" alt="Farmhouse pizza" loading="lazy"></div>
                     <div class="dish-info">
-                        <h3>The Farmhouse pie</h3>
+                        <h3>The Farmhouse Pie</h3>
                         <p>A delightful pizza topped with fresh vegetables and cheese.</p>
-                        <div class="price">₵ 40.00</div>
+                        <div class="price">GHS 40.00</div>
                     </div>
                 </div>
 
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/pizza.jpeg" alt="a picture of a pizza"></div>
+                    <div class="dish-img"><img src="img/pizza.jpeg" alt="Pepperoni pizza" loading="lazy"></div>
                     <div class="dish-info">
                         <h3>The Goodfella</h3>
-                        <p>A classic pizza with pepperoni, mozzarella, and a tangy tomato sauce.</p>
-                        <div class="price">₵ 45.00</div>
+                        <p>A classic pizza with pepperoni, mozzarella, and tangy tomato sauce.</p>
+                        <div class="price">GHS 45.00</div>
                     </div>
                 </div>
 
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/crack burgers.jpeg" alt="a picture of burger"></div>
+                    <div class="dish-img"><img src="img/crack burgers.jpeg" alt="Signature burger" loading="lazy"></div>
                     <div class="dish-info">
-                        <h3>Crack burger</h3>
-                        <p>Juicy beef burger with a special sauce, lettuce, and tomato.</p>
-                        <div class="price">₵ 35.00</div>
+                        <h3>Crack Burger</h3>
+                        <p>Juicy beef burger with special sauce, lettuce, and tomato.</p>
+                        <div class="price">GHS 35.00</div>
                     </div>
                 </div>
 
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/steak.jpeg" alt="steak picture"></div>
+                    <div class="dish-img"><img src="img/steak.jpeg" alt="Grilled steak" loading="lazy"></div>
                     <div class="dish-info">
                         <h3>Grilled Steak</h3>
                         <p>Perfectly grilled steak served with a side of vegetables.</p>
-                        <div class="price">₵ 60.00</div>
+                        <div class="price">GHS 60.00</div>
                     </div>
                 </div>
 
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/fries.jpeg" alt="a picture of french fries"></div>
+                    <div class="dish-img"><img src="img/fries.jpeg" alt="French fries" loading="lazy"></div>
                     <div class="dish-info">
                         <h3>French Fries</h3>
-                        <p>Crispy and golden French fries, a perfect side dish.</p>
-                        <div class="price">₵ 15.00</div>
+                        <p>Crispy and golden fries, perfect as a side or snack.</p>
+                        <div class="price">GHS 15.00</div>
                     </div>
                 </div>
 
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/jollof.jpeg" alt="picture of joloff rice"></div>
+                    <div class="dish-img"><img src="img/jollof.jpeg" alt="Jollof rice" loading="lazy"></div>
                     <div class="dish-info">
                         <h3>Jollof Rice</h3>
                         <p>Flavorful jollof rice cooked with tomatoes and spices.</p>
-                        <div class="price">₵ 30.00</div>
+                        <div class="price">GHS 30.00</div>
                     </div>
                 </div>
-                
+
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/Fried Rice.jpeg" alt="a picture of fried rice"></div>
+                    <div class="dish-img"><img src="img/Fried Rice.jpeg" alt="Fried rice dish" loading="lazy"></div>
                     <div class="dish-info">
                         <h3>Fried Rice</h3>
                         <p>Delicious fried rice cooked with vegetables and spices.</p>
-                        <div class="price">₵ 35.00</div>
+                        <div class="price">GHS 35.00</div>
                     </div>
                 </div>
 
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/ampesi.jpeg" alt="picture of ampesi"></div>
+                    <div class="dish-img"><img src="img/ampesi.jpeg" alt="Ampesi dish" loading="lazy"></div>
                     <div class="dish-info">
                         <h3>Ampesi</h3>
-                        <p>Delicious Ghanaian dish made with boiled yam and a spicy sauce.</p>
-                        <div class="price">₵ 25.00</div>
+                        <p>Ghanaian yam meal served with rich and spicy sauce.</p>
+                        <div class="price">GHS 25.00</div>
                     </div>
                 </div>
 
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/gcb3.jpeg" alt="almighty gob3"></div>
+                    <div class="dish-img"><img src="img/gcb3.jpeg" alt="Gobe with plantain" loading="lazy"></div>
                     <div class="dish-info">
                         <h3>Almighty</h3>
-                        <p>The one made with beans and plantain.</p>
-                        <div class="price">₵ 20.00</div>
+                        <p>Classic gobe made with beans and ripe plantain.</p>
+                        <div class="price">GHS 20.00</div>
                     </div>
                 </div>
 
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/rice balls.jpeg" alt="rice balls"></div>
+                    <div class="dish-img"><img src="img/rice balls.jpeg" alt="Rice balls with groundnut soup" loading="lazy"></div>
                     <div class="dish-info">
                         <h3>Rice Balls with Groundnut Soup</h3>
-                        <p>Soft and fluffy rice balls served with a spicy groundnut soup.</p>
-                        <div class="price">₵ 30.00</div>
+                        <p>Soft rice balls served with flavorful groundnut soup.</p>
+                        <div class="price">GHS 30.00</div>
                     </div>
                 </div>
 
                 <div class="dish-container">
-                    <div class="dish-img"><img src="img/soup.jpeg" alt="hot ghanaian soup"></div>
+                    <div class="dish-img"><img src="img/soup.jpeg" alt="Ghanaian light soup" loading="lazy"></div>
                     <div class="dish-info">
                         <h3>Light Soup</h3>
-                        <p>A spicy and flavorful soup made with fresh ingredients.</p>
-                        <div class="price">₵ 25.00</div>
+                        <p>A spicy and comforting soup made with fresh ingredients.</p>
+                        <div class="price">GHS 25.00</div>
                     </div>
                 </div>
             </section>
         </article>
 
         <section class="about-sec" id="about">
-                <div class="about-text">
-                    <span class="about-header">About Us</span>
-                    At musaChops, we celebrate bringing people together through flavor. We blend the vibrant tastes of Ghana with global classics, creating a unique dining experience.
-                    Our menu offers authentic Ghanaian dishes like Jollof Rice and Ampesi, alongside familiar favorites such as burgers, pizzas, and fries. We focus on fresh ingredients and a warm atmosphere.</br></br>
-                    Welcome to musaChops — where every bite is a dose of deliciousness.
-                </div>
-            <div class="about-img"><img src="img/aboutUs.jpeg" alt=""></div>
+            <div class="about-text">
+                <span class="about-header">About Us</span>
+                At MusaChops, we celebrate bringing people together through flavor. We blend the vibrant tastes of Ghana with global classics, creating a unique dining experience.
+                Our menu offers authentic Ghanaian dishes like jollof rice and ampesi, alongside familiar favorites such as burgers, pizzas, and fries. We focus on fresh ingredients and a warm atmosphere.
+                <br><br>
+                Welcome to MusaChops, where every bite is a dose of deliciousness.
+            </div>
+            <div class="about-img"><img src="img/aboutUs.jpeg" alt="MusaChops interior view" loading="lazy"></div>
         </section>
 
         <section class="services" id="services">
             <header class="services-head">
                 <h2>Our Services</h2>
-                <p>Experience exceptional dining with our range of services designed to make your visit and experience memorable.</p>
+                <p>Experience exceptional dining with services designed to make every visit memorable.</p>
             </header>
 
             <div class="service-cards">
                 <div class="service-card">
-                    <img src="img/fork-knife.svg" alt="dine in service">
+                    <img src="img/fork-knife.svg" alt="Dine-in service icon" loading="lazy">
                     <h3>Dine-In</h3>
-                    <p>Enjoy a cozy and welcoming atmosphere with our exceptional dine-in service. Perfect for family gatherings, romantic dinners, or casual outings with friends.</p>
+                    <p>Enjoy a cozy and welcoming atmosphere perfect for family gatherings, date nights, and casual meetups.</p>
                 </div>
 
                 <div class="service-card">
-                    <img src="img/shopping-bag.svg" alt="takeaway service">
+                    <img src="img/shopping-bag.svg" alt="Takeaway service icon" loading="lazy">
                     <h3>Takeaway</h3>
-                    <p>Craving our delicious meals but short on time? Our efficient takeaway service allows you to enjoy your favorite dishes on the go, without compromising on quality or taste.</p>
+                    <p>Get your favorites packed and ready when you are short on time without sacrificing taste or quality.</p>
                 </div>
 
                 <div class="service-card">
-                    <img src="img/truck.svg" alt="delivery service">
+                    <img src="img/truck.svg" alt="Delivery service icon" loading="lazy">
                     <h3>Delivery</h3>
-                    <p>Experience the convenience of having our mouth-watering meals delivered straight to your doorstep. Our reliable delivery service ensures your food arrives fresh and ready to enjoy.</p>
-                </div> 
+                    <p>Have your meals delivered fresh and hot to your doorstep with reliable and timely service.</p>
+                </div>
 
                 <div class="service-card">
-                    <img src="img/chef-hat.svg" alt="catering service">
+                    <img src="img/chef-hat.svg" alt="Catering service icon" loading="lazy">
                     <h3>Catering</h3>
-                    <p>Let us take care of your event with our professional catering services. We offer a range of customizable menus to suit your needs, ensuring a memorable dining experience for you and your guests.</p>
+                    <p>From office events to private celebrations, we provide customizable catering menus for every occasion.</p>
                 </div>
             </div>
         </section>
@@ -197,74 +209,76 @@
             <div class="container wrapper">
                 <header>
                     <h2>Thursday Special</h2>
-                    <p>Enjoy our special thurday treat with some local dishes</p>
+                    <p>Enjoy our Thursday spotlight with favorite local dishes.</p>
                 </header>
 
                 <div class="special-offers">
                     <div class="carousel-container">
                         <div class="slide">
-                            <img src="img/caro-tuo.jpeg" alt="a picture of tuozafi dish">
+                            <img src="img/caro-tuo.jpeg" alt="Tuozaafi special dish" loading="lazy">
                             <div class="slide-info">
                                 <h3>Irresistible Tuozaafi</h3>
-                                <p>Unmatched tasty Tuozaafi</p>
+                                <p>Unmatched, rich flavor in every bowl.</p>
                             </div>
                         </div>
 
                         <div class="slide">
-                            <img src="img/caro-banku-tilapia.jpeg" alt="banku and tilapia">
+                            <img src="img/caro-banku-tilapia.jpeg" alt="Banku and tilapia special" loading="lazy">
                             <div class="slide-info">
-                                <h3>Hottest Banku and Tilapia</h3>
-                                <p>The best and hottest banku and tilapia you will ever taste</p>
+                                <h3>Banku and Tilapia</h3>
+                                <p>One of the hottest and most requested local favorites.</p>
                             </div>
                         </div>
 
                         <div class="slide">
-                            <img src="img/tea.jpeg" alt="a picture of hot tea">
+                            <img src="img/tea.jpeg" alt="Hot tea special" loading="lazy">
                             <div class="slide-info">
-                                <h3>Hot lipton</h3>
-                                <p>Enjoy our special hot tea made with happiness and love</p>
+                                <h3>Hot Lipton</h3>
+                                <p>Freshly prepared and perfect for a calm evening.</p>
                             </div>
                         </div>
                     </div>
-                    <button class="btn next-caro">⇒</button>
-                    <button class="btn previous-caro">⇐</button>
+
+                    <button class="btn next-caro" type="button" aria-label="Next special">&#8594;</button>
+                    <button class="btn previous-caro" type="button" aria-label="Previous special">&#8592;</button>
 
                     <div class="indicators-container">
-                        <div class="indicator active"></div>
-                        <div class="indicator"></div>
-                        <div class="indicator"></div>
+                        <button class="indicator active" type="button" aria-label="Go to slide 1"></button>
+                        <button class="indicator" type="button" aria-label="Go to slide 2"></button>
+                        <button class="indicator" type="button" aria-label="Go to slide 3"></button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    <footer class="footer-container">
+
+    <footer class="footer-container" id="contact">
         <div class="flex-holder">
             <div class="footer-info">
                 <div class="musa">
-                    <h4>musaChops</h4>
-                    <p>Come lets give you that treat you wont forget</p>
+                    <h4>MusaChops</h4>
+                    <p>Come and let us serve you a treat you will not forget.</p>
                     <div class="socials">
-                        <a href="#"><img class="socials-logo" src="img/whatsapp-logo.svg" alt="link to our whatsapp"></a>
-                        <a href="#"><img class="socials-logo" src="img/instagram-logo.svg" alt="link to our instagram"></a>
-                        <a href="#"><img class="socials-logo" src="img/facebook-logo.svg" alt="link to our facebook"></a>
-                        <a href="#"><img class="socials-logo" src="img/x-logo.svg" alt="link to our twitter"></a>
+                        <a href="https://wa.me/233202520248" target="_blank" rel="noopener noreferrer"><img class="socials-logo" src="img/whatsapp-logo.svg" alt="Chat on WhatsApp"></a>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img class="socials-logo" src="img/instagram-logo.svg" alt="Follow on Instagram"></a>
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img class="socials-logo" src="img/facebook-logo.svg" alt="Visit Facebook page"></a>
+                        <a href="https://x.com/" target="_blank" rel="noopener noreferrer"><img class="socials-logo" src="img/x-logo.svg" alt="Follow on X"></a>
                     </div>
                 </div>
                 <div class="hours">
                     <h4>Hours</h4>
-                    <p>Mondays - Thusrdays: 11am - 10pm</p>
-                    <p>Fridays - Saturdays: 11am - 11pm</p>
-                    <p>Sundays: 12pm - 9pm</p>
+                    <p>Monday to Thursday: 11:00 AM - 10:00 PM</p>
+                    <p>Friday to Saturday: 11:00 AM - 11:00 PM</p>
+                    <p>Sunday: 12:00 PM - 9:00 PM</p>
                 </div>
-                <div class="contact" id="contact">
+                <div class="contact">
                     <h4>Contact</h4>
-                    <div><img class="contact-logo" src="img/map-pin.svg" alt="our location"><span>4l Street, Musa Lane, North Legon</span></div>
-                    <div><img class="contact-logo" src="img/phone.svg" alt="call us"><span>(233) 202520248</span></div>
-                    <div><img class="contact-logo" src="img/envelope-simple.svg" alt="emails us"><span>donmusa@gmail.com</span></div>
+                    <div><img class="contact-logo" src="img/map-pin.svg" alt="Location icon"><span>4L Street, Musa Lane, North Legon</span></div>
+                    <div><img class="contact-logo" src="img/phone.svg" alt="Phone icon"><span><a href="tel:+233202520248">(233) 202520248</a></span></div>
+                    <div><img class="contact-logo" src="img/envelope-simple.svg" alt="Email icon"><span><a href="mailto:donmusa@gmail.com">donmusa@gmail.com</a></span></div>
                 </div>
-            </div><br>
-            <div class="copyRight">© 2024 musaChops. All rights reserved.</div>
+            </div>
+            <div class="copyRight">&copy; 2026 MusaChops. All rights reserved.</div>
         </div>
     </footer>
 </body>
