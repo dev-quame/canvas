@@ -132,25 +132,36 @@ function setupJoinShortcut() {
 
 function setupMobileMenu() {
   const menuButton = document.getElementById("menu-toggle");
+  const menuIcon = menuButton?.querySelector("i");
   const nav = document.getElementById("primary-nav");
   const scrim = document.getElementById("nav-scrim");
-  if (!menuButton || !nav || !scrim) return;
+  if (!menuButton || !nav || !scrim || !menuIcon) return;
+
+  const toggleEvent = window.PointerEvent ? "pointerup" : "click";
+
+  function syncToggleVisual(isOpen) {
+    menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    menuIcon.classList.toggle("fa-bars", !isOpen);
+    menuIcon.classList.toggle("fa-xmark", isOpen);
+  }
 
   function openMenu() {
     scrim.hidden = false;
     document.body.classList.add("menu-open");
-    menuButton.setAttribute("aria-expanded", "true");
-    menuButton.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+    syncToggleVisual(true);
   }
 
   function closeMenu() {
     document.body.classList.remove("menu-open");
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    syncToggleVisual(false);
     scrim.hidden = true;
   }
 
-  menuButton.addEventListener("click", () => {
+  syncToggleVisual(false);
+
+  menuButton.addEventListener(toggleEvent, (event) => {
+    event.preventDefault();
     if (document.body.classList.contains("menu-open")) {
       closeMenu();
     } else {
@@ -164,13 +175,20 @@ function setupMobileMenu() {
     }
   });
 
-  scrim.addEventListener("click", closeMenu);
+  scrim.addEventListener(toggleEvent, closeMenu);
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > MOBILE_BREAKPOINT) {
+  const desktopMedia = window.matchMedia(`(min-width: ${MOBILE_BREAKPOINT + 1}px)`);
+  const syncMenuForViewport = (event) => {
+    if (event.matches) {
       closeMenu();
     }
-  });
+  };
+  syncMenuForViewport(desktopMedia);
+  if (typeof desktopMedia.addEventListener === "function") {
+    desktopMedia.addEventListener("change", syncMenuForViewport);
+  } else if (typeof desktopMedia.addListener === "function") {
+    desktopMedia.addListener(syncMenuForViewport);
+  }
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && document.body.classList.contains("menu-open")) {
@@ -740,7 +758,17 @@ window.addEventListener("load", () => {
   hideMainWrapper();
 });
 
-window.addEventListener("resize", headerHeightFix);
+let resizeFrame = 0;
+window.addEventListener("resize", () => {
+  if (resizeFrame) {
+    window.cancelAnimationFrame(resizeFrame);
+  }
+
+  resizeFrame = window.requestAnimationFrame(() => {
+    headerHeightFix();
+    resizeFrame = 0;
+  });
+});
 window.addEventListener("hashchange", () => {
   const hashId = window.location.hash.replace("#", "").trim();
   if (hashId) {

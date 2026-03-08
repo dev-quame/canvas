@@ -67,56 +67,124 @@ function setupNavLinks(closeMenu) {
   const navLinks = Array.from(document.querySelectorAll(".nav-link"));
   if (!navLinks.length) return;
 
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      closeMenu();
-    });
-  });
-
-  const sections = navLinks
+  const header = document.querySelector(".header-container");
+  const sectionPairs = navLinks
     .map((link) => {
       const id = link.getAttribute("href")?.replace("#", "").trim();
-      return id ? document.getElementById(id) : null;
+      const section = id ? document.getElementById(id) : null;
+      if (!id || !section) return null;
+      return { link, section };
     })
     .filter(Boolean);
 
-  if (!sections.length || !("IntersectionObserver" in window)) {
-    return;
+  if (!sectionPairs.length) return;
+
+  function clearActive() {
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      link.removeAttribute("aria-current");
+    });
   }
 
-  const linkBySection = new Map();
-  navLinks.forEach((link) => {
-    const id = link.getAttribute("href")?.replace("#", "").trim();
-    if (id) {
-      linkBySection.set(id, link);
+  function setActiveLink(activeLink) {
+    navLinks.forEach((link) => {
+      const isActive = link === activeLink;
+      link.classList.toggle("active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  function resolveHeaderOffset() {
+    return (header?.offsetHeight || 0) + 10;
+  }
+
+  function updateActiveFromScroll() {
+    const offset = resolveHeaderOffset();
+    const probe = window.scrollY + offset + 1;
+    const firstSection = sectionPairs[0].section;
+    const firstTop = Math.max(0, firstSection.offsetTop - offset);
+
+    // On the hero area, no primary nav item should be active.
+    if (probe < firstTop) {
+      clearActive();
+      return;
     }
+
+    let activeLink = null;
+    for (const pair of sectionPairs) {
+      const top = Math.max(0, pair.section.offsetTop - offset);
+      const bottom = top + pair.section.offsetHeight;
+      if (probe >= top && probe < bottom) {
+        activeLink = pair.link;
+        break;
+      }
+    }
+
+    // If below all sections, keep the last nav item active.
+    if (!activeLink) {
+      activeLink = sectionPairs[sectionPairs.length - 1].link;
+    }
+
+    setActiveLink(activeLink);
+  }
+
+  let scrollTicking = false;
+  function requestActiveUpdate() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(() => {
+      updateActiveFromScroll();
+      scrollTicking = false;
+    });
+  }
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      closeMenu();
+      setActiveLink(link);
+    });
+  });
+
+  updateActiveFromScroll();
+  window.addEventListener("scroll", requestActiveUpdate, { passive: true });
+  window.addEventListener("resize", requestActiveUpdate);
+  window.addEventListener("hashchange", requestActiveUpdate);
+}
+
+function setupRevealAnimations() {
+  if (!("IntersectionObserver" in window)) return;
+
+  const revealTargets = Array.from(
+    document.querySelectorAll(
+      ".section-head, .dish-container, .about-text, .about-img, .service-card, .special-offers, .footer-info > div"
+    )
+  );
+  if (!revealTargets.length) return;
+
+  revealTargets.forEach((element, index) => {
+    element.classList.add("reveal");
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 6, 4) * 35}ms`);
   });
 
   const observer = new IntersectionObserver(
     (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-      if (!visible?.target?.id) return;
-
-      navLinks.forEach((link) => {
-        const isActive = link.getAttribute("href") === `#${visible.target.id}`;
-        link.classList.toggle("active", isActive);
-        if (isActive) {
-          link.setAttribute("aria-current", "page");
-        } else {
-          link.removeAttribute("aria-current");
-        }
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
       });
     },
     {
-      threshold: [0.25, 0.5, 0.7],
-      rootMargin: "-25% 0px -55% 0px",
+      threshold: 0.12,
+      rootMargin: "0px 0px -12% 0px",
     }
   );
 
-  sections.forEach((section) => observer.observe(section));
+  revealTargets.forEach((element) => observer.observe(element));
 }
 
 function setupCarousel() {
@@ -381,6 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const { closeMenu } = setupMobileNav();
   setupNavLinks(closeMenu);
+  setupRevealAnimations();
 
   setupCarousel();
   setupMenuFiltering();
