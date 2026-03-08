@@ -8,6 +8,7 @@
     const hamburger = document.getElementById("hamburger");
     const navList = document.getElementById("primaryNav");
     const overlay = document.getElementById("overlay");
+    const navBar = document.getElementById("nav");
     const navLinks = Array.from(document.querySelectorAll(".nav-link"));
     const sections = navLinks
       .map((link) => {
@@ -21,6 +22,14 @@
     const themeStorageKey = "portfolio_theme";
 
     const isMobileViewport = () => window.matchMedia("(max-width: 900px)").matches;
+
+    if (navList) {
+      navList.setAttribute("aria-hidden", String(!navList.classList.contains("open")));
+    }
+
+    if (overlay) {
+      overlay.setAttribute("aria-hidden", "true");
+    }
 
     function readStoredTheme() {
       try {
@@ -79,11 +88,13 @@
       if (!overlay) return;
       overlay.hidden = !isActive;
       overlay.classList.toggle("active", isActive);
+      overlay.setAttribute("aria-hidden", String(!isActive));
     }
 
     function closeMenu() {
       if (!navList || !hamburger) return;
       navList.classList.remove("open");
+      navList.setAttribute("aria-hidden", "true");
       hamburger.classList.remove("active");
       hamburger.setAttribute("aria-expanded", "false");
       setOverlayActive(false);
@@ -93,6 +104,7 @@
     function openMenu() {
       if (!navList || !hamburger) return;
       navList.classList.add("open");
+      navList.setAttribute("aria-hidden", "false");
       hamburger.classList.add("active");
       hamburger.setAttribute("aria-expanded", "true");
       setOverlayActive(true);
@@ -114,8 +126,23 @@
       overlay.addEventListener("click", closeMenu);
     }
 
+    document.addEventListener("click", (event) => {
+      if (!navList || !hamburger || !isMobileViewport()) return;
+      if (!navList.classList.contains("open")) return;
+
+      const clickedInsideMenu = navList.contains(event.target);
+      const clickedHamburger = hamburger.contains(event.target);
+      if (!clickedInsideMenu && !clickedHamburger) {
+        closeMenu();
+      }
+    });
+
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
+        const targetId = link.getAttribute("href")?.replace("#", "");
+        if (targetId) {
+          setActiveLink(targetId);
+        }
         if (isMobileViewport()) {
           closeMenu();
         }
@@ -147,33 +174,52 @@
       });
     }
 
-    setActiveLink("home");
+    function getScrollSpyOffset() {
+      const navHeight = navBar?.offsetHeight || 0;
+      return navHeight + 36;
+    }
 
-    if ("IntersectionObserver" in window && sections.length > 0) {
-      const sectionObserver = new IntersectionObserver(
-        (entries) => {
-          let candidate = null;
+    function updateActiveLinkOnScroll() {
+      if (!sections.length) return;
 
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              if (!candidate || entry.intersectionRatio > candidate.intersectionRatio) {
-                candidate = entry;
-              }
-            }
-          });
+      const scrollPosition = window.scrollY + getScrollSpyOffset();
+      const lastSectionId = sections[sections.length - 1]?.id;
+      let activeId = sections[0].id;
 
-          if (candidate && candidate.target.id) {
-            setActiveLink(candidate.target.id);
-          }
-        },
-        {
-          root: null,
-          threshold: [0.2, 0.35, 0.55, 0.75],
-          rootMargin: "-42% 0px -48% 0px",
+      sections.forEach((section) => {
+        if (scrollPosition >= section.offsetTop) {
+          activeId = section.id;
         }
-      );
+      });
 
-      sections.forEach((section) => sectionObserver.observe(section));
+      const reachedBottom =
+        Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 2;
+
+      if (reachedBottom && lastSectionId) {
+        activeId = lastSectionId;
+      }
+
+      setActiveLink(activeId);
+    }
+
+    if (sections.length > 0) {
+      let ticking = false;
+
+      const requestUpdate = () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(() => {
+          updateActiveLinkOnScroll();
+          ticking = false;
+        });
+      };
+
+      window.addEventListener("scroll", requestUpdate, { passive: true });
+      window.addEventListener("resize", requestUpdate);
+      window.addEventListener("load", requestUpdate);
+      requestUpdate();
+    } else {
+      setActiveLink("home");
     }
 
     if (typingEl) {

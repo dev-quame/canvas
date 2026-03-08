@@ -11,7 +11,7 @@
     --accent-soft: #14b8a6;
     --ring: rgba(20, 184, 166, 0.28);
     --border: #cad6e3;
-    --overlay: rgba(4, 12, 18, 0.55);
+    --overlay: rgba(4, 12, 18, 0.28);
     --shadow: 0 18px 48px rgba(7, 29, 46, 0.12);
     --radius-lg: 1.25rem;
     --radius-md: 0.85rem;
@@ -36,7 +36,7 @@
     --accent-soft: #67e8f9;
     --ring: rgba(103, 232, 249, 0.24);
     --border: #26485f;
-    --overlay: rgba(2, 6, 10, 0.7);
+    --overlay: rgba(2, 6, 10, 0.42);
     --shadow: 0 24px 56px rgba(0, 0, 0, 0.34);
     --icon-filter: brightness(0) saturate(100%) invert(92%) sepia(10%) saturate(438%) hue-rotate(169deg) brightness(98%) contrast(94%);
     --hero-gradient:
@@ -110,7 +110,7 @@ a {
     visibility: hidden;
     pointer-events: none;
     transition: opacity 0.2s ease, visibility 0.2s ease;
-    z-index: 900;
+    z-index: 2400;
 }
 
 .overlay.active {
@@ -123,7 +123,6 @@ a {
     position: relative;
     min-height: 100svh;
     background: var(--hero-gradient);
-    isolation: isolate;
 }
 
 .site-header::after {
@@ -143,7 +142,7 @@ a {
     right: 0;
     margin-inline: auto;
     width: min(var(--max-width), 92vw);
-    z-index: 1200;
+    z-index: 2600;
     height: 4.25rem;
     padding: 0.65rem 1rem;
     border: 1px solid var(--border);
@@ -271,6 +270,7 @@ a {
     align-items: center;
     justify-content: center;
     position: relative;
+    z-index: 2700;
     transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
@@ -998,7 +998,7 @@ button:focus-visible,
 
     .nav-list {
         position: fixed;
-        right: 0;
+        right: -110%;
         top: 0;
         width: min(78vw, 320px);
         height: 100dvh;
@@ -1010,13 +1010,16 @@ button:focus-visible,
         flex-direction: column;
         align-items: stretch;
         gap: 0.45rem;
-        transform: translateX(100%);
-        transition: transform 0.24s ease;
-        z-index: 1100;
+        visibility: hidden;
+        pointer-events: none;
+        transition: right 0.24s ease, visibility 0.24s ease;
+        z-index: 2650;
     }
 
     .nav-list.open {
-        transform: translateX(0);
+        right: 0;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .nav-link {

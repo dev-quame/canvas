@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,172 +18,182 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header data-header class="header-container">
-    <h1 id="page-name">
-      <a class="nav-link active" data-nav="home" href="#home">Barca<span>&nbsp;4L</span></a>
-    </h1>
+    <div class="header-shell wrapper">
+      <h1 id="page-name">
+        <a class="brand" href="#home">Barca<span> 4L</span></a>
+      </h1>
 
-    <nav aria-label="Primary">
-      <ul id="main-menu">
-        <li><a class="nav-link" data-nav="latest" href="#latest">Latest</a></li>
-        <li><a class="nav-link" data-nav="topStories" href="#topStories">Top News</a></li>
-        <li><a class="nav-link" data-nav="games" href="#games">Games</a></li>
-        <li><a class="nav-link" data-nav="squad" href="#squad">Squad</a></li>
-        <li><a class="nav-link" data-nav="transfers" href="#transfers">Transfers</a></li>
+      <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-controls="primary-nav" aria-expanded="false">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul id="main-menu">
+          <li><a class="nav-link" data-nav="latest" href="#latest">Latest</a></li>
+          <li><a class="nav-link" data-nav="topStories" href="#topStories">Top News</a></li>
+          <li><a class="nav-link" data-nav="games" href="#games">Games</a></li>
+          <li><a class="nav-link" data-nav="squad" href="#squad">Squad</a></li>
+          <li><a class="nav-link" data-nav="transfers" href="#transfers">Transfers</a></li>
+        </ul>
+      </nav>
+
+      <ul id="user-menu">
+        <li>
+          <button id="menu-search" type="button" aria-controls="searchOverlay" aria-expanded="false" aria-label="Open search" title="Search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          </button>
+        </li>
+        <li><a class="join-link" href="#join">Join</a></li>
       </ul>
-    </nav>
-
-    <ul id="user-menu">
-      <li>
-        <button id="menu-search" type="button" aria-controls="searchOverlay" aria-expanded="false" aria-label="Open search" title="Search">
-          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-        </button>
-      </li>
-      <li id="join"><a href="#join">Join</a></li>
-    </ul>
+    </div>
 
     <div class="search-overlay" id="searchOverlay" hidden>
-      <button class="close-search" type="button" aria-label="Close search">&times;</button>
+      <button class="close-search" type="button" aria-label="Close search">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
       <div class="search-container">
         <label class="visually-hidden" for="barca-search-input">Search articles</label>
         <input id="barca-search-input" type="text" class="search-input" placeholder="Search stories, players, and topics...">
+        <p class="search-hint" id="search-hint">Type at least 2 characters to search your stories.</p>
         <div class="search-results" id="search-results" aria-live="polite"></div>
       </div>
     </div>
   </header>
 
+  <div class="nav-scrim" id="nav-scrim" hidden></div>
+
   <main class="main-container" id="main-content">
     <section class="page active" id="home">
-      <div class="overlay">
-        <div class="hero">
-          <h1>FC <span>Barcelona</span> - More Than A Club. It Is Our Legacy.</h1>
-          <p>Everything Barca: match reports, player news, transfer rumors, throwbacks, and everything in between.</p>
-          <div class="btns">
-            <a href="#latest" class="btn nav-link" data-nav="latest">Latest Stories</a>
-            <a href="#games" class="btn btn-outline nav-link" data-nav="games">Upcoming Matches</a>
-          </div>
-        </div>
+      <div class="overlay wrapper">
+        <section class="hero" aria-labelledby="hero-heading">
+          <p class="hero-kicker">Independent fan editorial</p>
+          <h2 id="hero-heading">FC Barcelona Coverage With Clarity, Depth, And No Heyhey.</h2>
+          <p>Daily match pulse, tactical snapshots, transfer context, and storylines that matter. Barca4L Mes Un Club, its our Legacy.</p>
 
-        <section class="newletter" id="join">
-          <h2><span class="forL">4L</span> Newsletter</h2>
-          <p>Subscribe to Barca4L and get match previews, transfer updates, and top stories straight to your inbox.</p>
-          <form action="#" class="newsletter-form">
+          <div class="hero-pills" aria-label="Site strengths">
+            <span>Match Analysis</span>
+            <span>Transfer Intel</span>
+            <span>Squad Tracking</span>
+          </div>
+
+          <div class="btns">
+            <a href="#latest" class="btn">Read Latest</a>
+            <a href="#games" class="btn btn-outline">Next Fixtures</a>
+          </div>
+        </section>
+
+        <section class="newsletter" id="join" aria-labelledby="newsletter-title">
+          <h2 id="newsletter-title"><span class="forL">4L</span> Newsletter</h2>
+          <p>Get one concise bulletin each week: key results, transfer movement, and standout performances.</p>
+          <form action="#" class="newsletter-form" novalidate>
             <label class="visually-hidden" for="newsletter-email">Email address</label>
-            <input id="newsletter-email" type="email" placeholder="Your email address" required>
+            <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
             <button type="submit">Subscribe</button>
           </form>
+          <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
         </section>
       </div>
     </section>
 
     <div class="wrapper main-wrapper">
-      <article class="page" id="latest">
+      <article class="page" id="latest" aria-label="Latest stories">
         <section id="highlighter" class="blogPost highlight">
           <a href="blogPost.html?slug=early-season-barcelona-injury-worries&title=Early%20Season%20Barcelona%20Injury%20Worries&img=img%2FbaldeInjury.jpeg"><img src="img/baldeInjury.jpeg" alt="Alejandro Balde sidelined with injury concerns"></a>
           <a href="blogPost.html?slug=early-season-barcelona-injury-worries&title=Early%20Season%20Barcelona%20Injury%20Worries&img=img%2FbaldeInjury.jpeg"><h2>Early season Barcelona injury worries</h2></a>
           <p class="date">@mansaMusa 1st September 2025</p>
-          <p class="description">
-            Three games into the season and Barcelona are already dealing with key injuries. Balde has a hamstring issue, Frenkie returned from the Dutch camp, and concern is growing around Yamal.
-          </p>
+          <p class="description">Three games into the season and Barcelona are already dealing with key injuries. Balde has a hamstring issue, Frenkie returned from the Dutch camp, and concern is growing around Yamal.</p>
         </section>
 
         <section class="blogPost">
           <a href="blogPost.html?slug=mallorca-0-3-barcelona-opener&title=Mallorca%200%3A3%20Barcelona%20Thoughts%20on%20the%20Opener&img=img%2FmallocaBarca2.jpeg"><img src="img/mallocaBarca2.jpeg" alt="Barcelona players celebrating away win at Mallorca"></a>
           <a href="blogPost.html?slug=mallorca-0-3-barcelona-opener&title=Mallorca%200%3A3%20Barcelona%20Thoughts%20on%20the%20Opener&img=img%2FmallocaBarca2.jpeg"><h2>Mallorca 0:3 Barcelona - thoughts on the opener</h2></a>
           <p class="date">@mansa 16th August 2025</p>
-          <p class="description">
-            Barcelona opened the campaign with an emphatic win away at Mallorca, with Yamal, Raphinha, and Ferran all on the scoresheet.
-          </p>
+          <p class="description">Barcelona opened the campaign with an emphatic win away at Mallorca, with Yamal, Raphinha, and Ferran all on the scoresheet.</p>
         </section>
 
         <section class="blogPost">
-          <a href="blogPost.html?slug=fermin-not-for-sale&title=Fermin%20Should%20Not%20Be%20For%20Sale&img=img%2FFerm%C3%ACnOption.jpeg"><img src="img/FermìnOption.jpeg" alt="Fermin Lopez during a match"></a>
+          <a href="blogPost.html?slug=fermin-not-for-sale&title=Fermin%20Should%20Not%20Be%20For%20Sale&img=img%2FFerm%C3%ACnOption.jpeg"><img src="img/Ferm%C3%ACnOption.jpeg" alt="Fermin Lopez during a match"></a>
           <a href="blogPost.html?slug=fermin-not-for-sale&title=Fermin%20Should%20Not%20Be%20For%20Sale&img=img%2FFerm%C3%ACnOption.jpeg"><h2>Fermin should not be up for sale</h2></a>
           <p class="date">@musa 14th August 2025</p>
-          <p class="description">
-            Exit rumors around Fermin Lopez have intensified due to Barcelona's financial pressure, but selling him could be a major long-term mistake.
-          </p>
+          <p class="description">Exit rumors around Fermin Lopez have intensified due to Barcelona's financial pressure, but selling him could be a major long-term mistake.</p>
         </section>
 
         <section class="blogPost">
           <a href="blogPost.html?slug=rashford-looks-promising&title=Rashford%20Looks%20Promising&img=img%2FrashfordSigns.jpeg"><img src="img/rashfordSigns.jpeg" alt="Marcus Rashford in Barcelona colors"></a>
           <a href="blogPost.html?slug=rashford-looks-promising&title=Rashford%20Looks%20Promising&img=img%2FrashfordSigns.jpeg"><h2>Rashford looks really promising</h2></a>
           <p class="date">@mansaMusa 13th August 2025</p>
-          <p class="description">
-            Even without early goals, his ball progression and movement suggest there is a lot more to come in this setup.
-          </p>
+          <p class="description">Even without early goals, his ball progression and movement suggest there is a lot more to come in this setup.</p>
         </section>
 
         <section class="blogPost">
           <a href="blogPost.html?slug=thank-you-inigo&title=Thank%20You%20Inigo&img=img%2FInigoThanks.jpeg"><img src="img/InigoThanks.jpeg" alt="Inigo Martinez appreciation post"></a>
           <a href="blogPost.html?slug=thank-you-inigo&title=Thank%20You%20Inigo&img=img%2FInigoThanks.jpeg"><h2>Thank you, Inigo</h2></a>
           <p class="date">@mansa 7th August 2025</p>
-          <p class="description">
-            A difficult exit to accept after his level last season, and many fans are frustrated about how the club handled it.
-          </p>
+          <p class="description">A difficult exit to accept after his level last season, and many fans are frustrated about how the club handled it.</p>
         </section>
       </article>
 
-      <article class="page" id="topStories">
+      <article class="page" id="topStories" aria-label="Top stories">
         <section class="blogPost">
-          <a href="blogPost.html?slug=concerning-team-performance&title=Barcelona%20Are%20Not%20Playing%20Well%20Yet&img=img%2FTeamplay.jpeg" class="t-imgA"><img src="img/Teamplay.jpeg" alt="Barcelona team shape under pressure"></a>
-          <a href="blogPost.html?slug=concerning-team-performance&title=Barcelona%20Are%20Not%20Playing%20Well%20Yet&img=img%2FTeamplay.jpeg" class="t-h2"><h2>The team performance is still concerning</h2></a>
+          <a href="blogPost.html?slug=concerning-team-performance&title=Barcelona%20Are%20Not%20Playing%20Well%20Yet&img=img%2FTeamplay.jpeg"><img src="img/Teamplay.jpeg" alt="Barcelona team shape under pressure"></a>
+          <a href="blogPost.html?slug=concerning-team-performance&title=Barcelona%20Are%20Not%20Playing%20Well%20Yet&img=img%2FTeamplay.jpeg"><h2>The team performance is still concerning</h2></a>
           <p class="date">@sabbath 31st August 2025</p>
           <p class="description">The results are there, but defensive structure and attacking sharpness still look inconsistent after three games.</p>
         </section>
 
         <section class="blogPost">
-          <a href="blogPost.html?slug=management-crisis-unbearable&title=Barcelona%20Management%20Crisis%20Is%20Becoming%20Unbearable&img=img%2FBarcamanage.jpeg" class="t-imgA"><img src="img/Barcamanage.jpeg" alt="Barcelona management discussion image"></a>
-          <a href="blogPost.html?slug=management-crisis-unbearable&title=Barcelona%20Management%20Crisis%20Is%20Becoming%20Unbearable&img=img%2FBarcamanage.jpeg" class="t-h2"><h2>Management pressure continues to rise</h2></a>
+          <a href="blogPost.html?slug=management-crisis-unbearable&title=Barcelona%20Management%20Crisis%20Is%20Becoming%20Unbearable&img=img%2FBarcamanage.jpeg"><img src="img/Barcamanage.jpeg" alt="Barcelona management discussion image"></a>
+          <a href="blogPost.html?slug=management-crisis-unbearable&title=Barcelona%20Management%20Crisis%20Is%20Becoming%20Unbearable&img=img%2FBarcamanage.jpeg"><h2>Management pressure continues to rise</h2></a>
           <p class="date">@sabbath 27th August 2025</p>
           <p class="description">Many fans are increasingly frustrated by financial decisions and recurring squad planning issues.</p>
         </section>
 
         <section class="blogPost">
-          <a href="blogPost.html?slug=chelsea-50m-fermin-bid&title=Chelsea%20Considering%20A%2050M%20Move%20For%20Fermin%20Lopez&img=img%2FFermin2Option.jpeg" class="t-imgA"><img src="img/Fermin2Option.jpeg" alt="Fermin Lopez transfer rumor feature"></a>
-          <a href="blogPost.html?slug=chelsea-50m-fermin-bid&title=Chelsea%20Considering%20A%2050M%20Move%20For%20Fermin%20Lopez&img=img%2FFermin2Option.jpeg" class="t-h2"><h2>Chelsea considering a 50M move for Fermin</h2></a>
+          <a href="blogPost.html?slug=chelsea-50m-fermin-bid&title=Chelsea%20Considering%20A%2050M%20Move%20For%20Fermin%20Lopez&img=img%2FFermin2Option.jpeg"><img src="img/Fermin2Option.jpeg" alt="Fermin Lopez transfer rumor feature"></a>
+          <a href="blogPost.html?slug=chelsea-50m-fermin-bid&title=Chelsea%20Considering%20A%2050M%20Move%20For%20Fermin%20Lopez&img=img%2FFermin2Option.jpeg"><h2>Chelsea considering a 50M move for Fermin</h2></a>
           <p class="date">@sabbath 27th August 2025</p>
           <p class="description">Reports suggest Chelsea are preparing a serious bid for one of Barca's most valuable young midfield assets.</p>
         </section>
 
         <section class="blogPost">
-          <a href="blogPost.html?slug=joan-rashford-registered&title=Joan%20Garcia%20And%20Rashford%20Registered&img=img%2FJoanXRash.jpg" class="t-imgA"><img src="img/JoanXRash.jpg" alt="Joan Garcia and Marcus Rashford registration update"></a>
-          <a href="blogPost.html?slug=joan-rashford-registered&title=Joan%20Garcia%20And%20Rashford%20Registered&img=img%2FJoanXRash.jpg" class="t-h2"><h2>Joan Garcia and Rashford have been registered</h2></a>
+          <a href="blogPost.html?slug=joan-rashford-registered&title=Joan%20Garcia%20And%20Rashford%20Registered&img=img%2FJoanXRash.jpg"><img src="img/JoanXRash.jpg" alt="Joan Garcia and Marcus Rashford registration update"></a>
+          <a href="blogPost.html?slug=joan-rashford-registered&title=Joan%20Garcia%20And%20Rashford%20Registered&img=img%2FJoanXRash.jpg"><h2>Joan Garcia and Rashford have been registered</h2></a>
           <p class="date">@sabbath 16th August 2025</p>
           <p class="description">Both arrivals are now officially available for matchday squads following registration approval.</p>
         </section>
       </article>
 
-      <article class="page" id="games">
+      <article class="page" id="games" aria-label="Games and previews">
         <section class="blogPost">
-          <a href="blogPost.html?slug=first-home-game-valencia&title=Valencia%20First%20Home%20Game%20Preview&img=img%2FValencia.jpeg" class="imgLink"><img src="img/Valencia.jpeg" alt="Barcelona squad ahead of home game against Valencia"></a>
-          <a href="blogPost.html?slug=first-home-game-valencia&title=Valencia%20First%20Home%20Game%20Preview&img=img%2FValencia.jpeg" class="blogTitle"><h2>Valencia up next in the first home game</h2></a>
-          <p class="date">@sabbath September 4th 2025</p>
+          <a href="blogPost.html?slug=first-home-game-valencia&title=Valencia%20First%20Home%20Game%20Preview&img=img%2FValencia.jpeg"><img src="img/Valencia.jpeg" alt="Barcelona squad ahead of home game against Valencia"></a>
+          <a href="blogPost.html?slug=first-home-game-valencia&title=Valencia%20First%20Home%20Game%20Preview&img=img%2FValencia.jpeg"><h2>Valencia up next in the first home game</h2></a>
+          <p class="date">@sabbath 4th September 2025</p>
           <p class="description">After three away fixtures, Barca finally return home in what should be a strong atmosphere at kickoff.</p>
         </section>
 
         <section class="blogPost">
-          <a href="blogPost.html?slug=star-garcia-rescue&title=Air%20Garcia%20Rescues%20Barcelona&img=img%2FstarGarcia.jpeg" class="imgLink"><img src="img/starGarcia.jpeg" alt="Goalkeeper Air Garcia making a key save"></a>
-          <a href="blogPost.html?slug=star-garcia-rescue&title=Air%20Garcia%20Rescues%20Barcelona&img=img%2FstarGarcia.jpeg" class="blogTitle"><h2>Star boy Air Garcia to the rescue</h2></a>
-          <p class="date">@mansaMusa August 31st 2025</p>
+          <a href="blogPost.html?slug=star-garcia-rescue&title=Air%20Garcia%20Rescues%20Barcelona&img=img%2FstarGarcia.jpeg"><img src="img/starGarcia.jpeg" alt="Goalkeeper Air Garcia making a key save"></a>
+          <a href="blogPost.html?slug=star-garcia-rescue&title=Air%20Garcia%20Rescues%20Barcelona&img=img%2FstarGarcia.jpeg"><h2>Star boy Air Garcia to the rescue</h2></a>
+          <p class="date">@mansaMusa 31st August 2025</p>
           <p class="description">A huge performance in goal against Rayo with eight saves that kept Barca alive in a difficult game.</p>
         </section>
 
         <section class="blogPost">
-          <a href="blogPost.html?slug=last-minute-levante-winner&title=Last%20Minute%20Winner%20Away%20At%20Levante&img=img%2FLastminute.jpeg" class="imgLink"><img src="img/Lastminute.jpeg" alt="Barcelona players celebrating a late goal"></a>
-          <a href="blogPost.html?slug=last-minute-levante-winner&title=Last%20Minute%20Winner%20Away%20At%20Levante&img=img%2FLastminute.jpeg" class="blogTitle"><h2>Late winner away at Levante</h2></a>
-          <p class="date">@sabbath August 23rd 2025</p>
+          <a href="blogPost.html?slug=last-minute-levante-winner&title=Last%20Minute%20Winner%20Away%20At%20Levante&img=img%2FLastminute.jpeg"><img src="img/Lastminute.jpeg" alt="Barcelona players celebrating a late goal"></a>
+          <a href="blogPost.html?slug=last-minute-levante-winner&title=Last%20Minute%20Winner%20Away%20At%20Levante&img=img%2FLastminute.jpeg"><h2>Late winner away at Levante</h2></a>
+          <p class="date">@sabbath 23rd August 2025</p>
           <p class="description">Not the cleanest display, but the final push delivered three points and kept momentum alive.</p>
         </section>
 
         <section class="blogPost">
-          <a href="blogPost.html?slug=barcelona-three-goals-mallorca&title=Barcelona%20Score%20Three%20Away%20At%20Mallorca&img=img%2FMallorcagames2.jpeg" class="imgLink"><img src="img/Mallorcagames2.jpeg" alt="Barcelona attack against Mallorca"></a>
-          <a href="blogPost.html?slug=barcelona-three-goals-mallorca&title=Barcelona%20Score%20Three%20Away%20At%20Mallorca&img=img%2FMallorcagames2.jpeg" class="blogTitle"><h2>Barcelona score three away at Mallorca</h2></a>
-          <p class="date">@mansamusa August 16th 2025</p>
+          <a href="blogPost.html?slug=barcelona-three-goals-mallorca&title=Barcelona%20Score%20Three%20Away%20At%20Mallorca&img=img%2FMallorcagames2.jpeg"><img src="img/Mallorcagames2.jpeg" alt="Barcelona attack against Mallorca"></a>
+          <a href="blogPost.html?slug=barcelona-three-goals-mallorca&title=Barcelona%20Score%20Three%20Away%20At%20Mallorca&img=img%2FMallorcagames2.jpeg"><h2>Barcelona score three away at Mallorca</h2></a>
+          <p class="date">@mansaMusa 16th August 2025</p>
           <p class="description">A confident opening-day performance that set the tone for the first stretch of the season.</p>
         </section>
       </article>
 
-      <article class="page" id="squad">
+      <article class="page" id="squad" aria-label="Squad analysis">
         <section class="blogPost blog-placeholder">
           <h2>Squad analysis updates coming soon</h2>
           <p class="date">Editorial desk</p>
@@ -196,16 +206,16 @@
         </section>
       </article>
 
-      <article class="page" id="transfers">
+      <article class="page" id="transfers" aria-label="Transfers">
         <section class="blogPost blog-placeholder">
           <h2>Transfer board under review</h2>
           <p class="date">Editorial desk</p>
           <p class="description">Incoming, outgoing, and rumor quality ratings will be published here shortly.</p>
         </section>
         <section class="blogPost blog-placeholder">
-          <h2>Registration and wage-space tracker</h2>
+          <h2>Registration and Salary-Space Concerns</h2>
           <p class="date">Editorial desk</p>
-          <p class="description">A practical view of squad registration status and financial impact throughout the window.</p>
+          <p class="description">A practical view of squad registration status and financial health throughout the window.</p>
         </section>
       </article>
     </div>

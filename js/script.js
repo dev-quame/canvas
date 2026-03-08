@@ -33,7 +33,7 @@
   }
 
   function updateButtonState() {
-    submitBtn.disabled = isSubmitting || !form.checkValidity();
+    submitBtn.disabled = isSubmitting;
   }
 
   function validatePayload(payload) {
@@ -69,6 +69,11 @@
     event.preventDefault();
 
     if (isSubmitting) {
+      return;
+    }
+
+    if (!form.reportValidity()) {
+      setStatus("error", "Please complete all required fields correctly.");
       return;
     }
 
