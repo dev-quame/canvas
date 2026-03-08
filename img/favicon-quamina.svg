@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Quamina E favicon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a2333"/>
+      <stop offset="1" stop-color="#0e3b57"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4ec0ff"/>
+      <stop offset="1" stop-color="#8be3ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="3" y="3" width="58" height="58" rx="14" fill="url(#bg)"/>
+  <rect x="8" y="8" width="48" height="48" rx="11" fill="none" stroke="url(#accent)" stroke-width="2"/>
+
+  <circle cx="24" cy="31" r="12" fill="none" stroke="#e9f8ff" stroke-width="5"/>
+  <path d="M30 37 L37 44" fill="none" stroke="#e9f8ff" stroke-width="5" stroke-linecap="round"/>
+
+  <rect x="40" y="19" width="4.5" height="25" rx="1" fill="#8bdfff"/>
+  <rect x="40" y="19" width="12" height="4" rx="1" fill="#8bdfff"/>
+  <rect x="40" y="29" width="10" height="4" rx="1" fill="#8bdfff"/>
+  <rect x="40" y="40" width="12" height="4" rx="1" fill="#8bdfff"/>
+</svg>

@@ -137,8 +137,6 @@ function setupMobileMenu() {
   const scrim = document.getElementById("nav-scrim");
   if (!menuButton || !nav || !scrim || !menuIcon) return;
 
-  const toggleEvent = window.PointerEvent ? "pointerup" : "click";
-
   function syncToggleVisual(isOpen) {
     menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
     menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
@@ -160,8 +158,7 @@ function setupMobileMenu() {
 
   syncToggleVisual(false);
 
-  menuButton.addEventListener(toggleEvent, (event) => {
-    event.preventDefault();
+  menuButton.addEventListener("click", () => {
     if (document.body.classList.contains("menu-open")) {
       closeMenu();
     } else {
@@ -175,7 +172,7 @@ function setupMobileMenu() {
     }
   });
 
-  scrim.addEventListener(toggleEvent, closeMenu);
+  scrim.addEventListener("click", closeMenu);
 
   const desktopMedia = window.matchMedia(`(min-width: ${MOBILE_BREAKPOINT + 1}px)`);
   const syncMenuForViewport = (event) => {
@@ -621,6 +618,32 @@ function openShareWindow(url) {
   window.open(url, "_blank", "noopener,noreferrer");
 }
 
+async function copyTextToClipboard(text) {
+  if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const tempInput = document.createElement("textarea");
+  tempInput.value = text;
+  tempInput.setAttribute("readonly", "readonly");
+  tempInput.style.position = "fixed";
+  tempInput.style.opacity = "0";
+  tempInput.style.pointerEvents = "none";
+  tempInput.style.left = "-9999px";
+  document.body.appendChild(tempInput);
+
+  try {
+    tempInput.select();
+    const copied = document.execCommand("copy");
+    if (!copied) {
+      throw new Error("Copy command failed");
+    }
+  } finally {
+    document.body.removeChild(tempInput);
+  }
+}
+
 function initShareButtons() {
   const shareButtons = document.querySelectorAll(".share-btn");
   if (!shareButtons.length) return;
@@ -628,6 +651,7 @@ function initShareButtons() {
   const currentUrl = window.location.href;
   const articleTitle = document.getElementById("article-title")?.textContent || document.title;
   const copyButton = document.getElementById("copy-article-link");
+  const defaultCopyLabel = copyButton?.textContent?.trim() || "Copy Link";
 
   shareButtons.forEach((button) => {
     button.addEventListener("click", async () => {
@@ -646,17 +670,22 @@ function initShareButtons() {
         return;
       }
 
-      if (button.classList.contains("copy-link") && navigator.clipboard) {
+      if (button.classList.contains("copy-link")) {
         try {
-          await navigator.clipboard.writeText(currentUrl);
+          await copyTextToClipboard(currentUrl);
           if (copyButton) {
             copyButton.textContent = "Link Copied";
             setTimeout(() => {
-              copyButton.innerHTML = '<i class="fa-solid fa-link" aria-hidden="true"></i> Copy Link';
+              copyButton.textContent = defaultCopyLabel;
             }, 1200);
           }
         } catch (error) {
-          // Ignore clipboard errors.
+          if (copyButton) {
+            copyButton.textContent = "Copy Failed";
+            setTimeout(() => {
+              copyButton.textContent = defaultCopyLabel;
+            }, 1400);
+          }
         }
       }
     });

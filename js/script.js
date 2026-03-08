@@ -9,10 +9,12 @@
     return;
   }
 
-  const endpoint = "https://canvas-api-9y7i.onrender.com/api/forms";
+  const defaultEndpoint = "https://canvas-api-9y7i.onrender.com/api/forms";
+  const endpoint = (form.dataset.endpoint || defaultEndpoint).trim() || defaultEndpoint;
+  const healthEndpoint = endpoint.replace(/\/api\/forms\/?$/i, "/api/health");
   const submitLabel = "Send Message ->";
   const loadingLabel = "Sending...";
-  const timeoutMs = 12000;
+  const timeoutMs = 30000;
 
   const fields = {
     name: document.getElementById("name"),
@@ -22,6 +24,7 @@
   };
 
   let isSubmitting = false;
+  let warmupStarted = false;
 
   function cleanText(value) {
     return value.replace(/[\u0000-\u001F\u007F]/g, "").replace(/\s+/g, " ").trim();
@@ -32,8 +35,27 @@
     status.className = type;
   }
 
+  function buildPayload() {
+    return {
+      name: cleanText(fields.name?.value || ""),
+      email: cleanText(fields.email?.value || "").toLowerCase(),
+      subject: cleanText(fields.subject?.value || ""),
+      message: cleanText(fields.message?.value || ""),
+    };
+  }
+
+  function isPayloadReady() {
+    if (!form.checkValidity()) {
+      return false;
+    }
+
+    const payload = buildPayload();
+    return validatePayload(payload) === "";
+  }
+
   function updateButtonState() {
-    submitBtn.disabled = isSubmitting;
+    submitBtn.disabled = isSubmitting || !isPayloadReady();
+    submitBtn.setAttribute("aria-disabled", String(submitBtn.disabled));
   }
 
   function validatePayload(payload) {
@@ -65,6 +87,32 @@
     }
   }
 
+  function warmUpServer() {
+    if (warmupStarted) {
+      return;
+    }
+
+    warmupStarted = true;
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 7000);
+
+    fetch(healthEndpoint, {
+      method: "GET",
+      mode: "cors",
+      credentials: "omit",
+      cache: "no-store",
+      referrerPolicy: "strict-origin-when-cross-origin",
+      signal: controller.signal,
+    })
+      .catch(() => {})
+      .finally(() => {
+        window.clearTimeout(timeoutId);
+      });
+  }
+
+  window.addEventListener("load", warmUpServer, { once: true });
+  form.addEventListener("focusin", warmUpServer, { once: true });
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -85,12 +133,9 @@
       return;
     }
 
-    const payload = {
-      name: cleanText(fields.name?.value || ""),
-      email: cleanText(fields.email?.value || "").toLowerCase(),
-      subject: cleanText(fields.subject?.value || ""),
-      message: cleanText(fields.message?.value || ""),
-    };
+    warmUpServer();
+
+    const payload = buildPayload();
 
     const validationError = validatePayload(payload);
     if (validationError) {
@@ -125,6 +170,10 @@
         const fallbackMessage =
           response.status === 429
             ? "Too many requests right now. Please try again in a moment."
+            : response.status === 403
+              ? "Request blocked by CORS. Add your GitHub Pages domain to the API allowlist."
+              : response.status >= 500
+                ? "Server is unavailable right now. If this is Render free tier sleep, wait a moment and try again."
             : "Unable to send your message right now. Please try again.";
         throw new Error(result.error || fallbackMessage);
       }
@@ -137,7 +186,9 @@
       }, 5000);
     } catch (error) {
       if (error.name === "AbortError") {
-        setStatus("error", "Request timed out. Please check your connection and try again.");
+        setStatus("error", "Request timed out. Server may be waking from sleep. Please wait 20-30 seconds and try again.");
+      } else if (error instanceof TypeError) {
+        setStatus("error", "Network or CORS error. Verify the API URL and Render CORS allowlist for your GitHub Pages domain.");
       } else {
         setStatus("error", error.message || "Network error. Please try again.");
       }

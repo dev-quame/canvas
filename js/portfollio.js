@@ -224,7 +224,7 @@
 
     if (typingEl) {
       const phrases = [
-        "Classic interfaces built to last.",
+        "Timeless interfaces built to last.",
         "Full-stack products with clear structure.",
         "Robust UX that drives real action.",
       ];
