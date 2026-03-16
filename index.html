@@ -9,7 +9,7 @@
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#081a26">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-pd07sbdn7jzdlOpr7Y+v9huxkBK3n7EVrdtQKIRg8M0='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://canvas-api-9y7i.onrender.com; base-uri 'self'; form-action 'self' https://canvas-api-9y7i.onrender.com; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-CU/oCbZJbyZ35ehoAxbujbDeeLkvoBz/39E6rcKRCxU='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://canvas-api-9y7i.onrender.com; base-uri 'self'; form-action 'self' https://canvas-api-9y7i.onrender.com; upgrade-insecure-requests">
     <title>Quamina Elvin | Full-Stack Software Developer</title>
     <link rel="canonical" href="https://quaminaelvin.com/">
     <meta property="og:site_name" content="Quamina Elvin">
@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="styles/portfolio.css">
     <link rel="icon" href="img/favicon-quamina.svg" type="image/svg+xml">
     <script type="application/ld+json" id="seo-schema">
-{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Quamina Elvin","url":"https://quaminaelvin.com/"},{"@type":"Person","name":"Quamina Elvin","url":"https://quaminaelvin.com/","jobTitle":"Full-Stack Software Developer","description":"Full-stack software developer building scalable web systems, robust APIs, and production-ready applications.","email":"mailto:quaminaelvin@gmail.com","telephone":"+233542016816","sameAs":["https://www.linkedin.com/in/elvin-quamina-adjei-b1801538a","https://github.com/dev-quame"],"knowsAbout":["Full-Stack Development","Software Systems","Web Application Architecture","Backend APIs","React","TypeScript","Node.js","Express","MongoDB","Redis","Cloudinary","Playwright"],"worksFor":{"@type":"Organization","name":"Quamina Studio"}}]}
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Quamina Elvin","url":"https://quaminaelvin.com/"},{"@type":"Person","name":"Quamina Elvin","url":"https://quaminaelvin.com/","jobTitle":"Full-Stack Software Developer","description":"Full-stack software developer building scalable web systems, robust APIs, and production-ready applications.","email":"mailto:quaminaelvin@gmail.com","telephone":"+233542016816","sameAs":["https://www.linkedin.com/in/elvin-quamina-adjei-b1801538a","https://github.com/dev-quame"],"knowsAbout":["Full-Stack Development","Software Systems","Web Application Architecture","Backend APIs","API Design","Database Modeling","React","TypeScript","Node.js","Express","MongoDB","PostgreSQL","Redis","Cloudinary","Stripe","Paystack","Playwright"],"worksFor":{"@type":"Organization","name":"Quamina Studio"}}]}
     </script>
     <script src="js/portfollio.js" defer></script>
     <script src="js/script.js" defer></script>
@@ -104,46 +104,65 @@
                     </p>
                     <p>
                         Recently, I built a full-stack e-commerce application using React (Vite, TypeScript, Tailwind),
-                        Express/Node, MongoDB, Redis, Cloudinary, and Paystack, with Playwright E2E testing.
+                        Express/Node, MongoDB, Redis, Cloudinary, Stripe, and Paystack, with Playwright E2E testing.
                         I prioritize maintainability, accessibility, and business impact.
+                    </p>
+                    <p>
+                        I also work comfortably with PostgreSQL when a relational model, structured queries, and stronger transactional guarantees are the right fit.
                     </p>
                     <a href="#contact" class="text-link">Let us build something</a>
                 </div>
 
                 <aside class="about-card reveal" aria-label="Skills and strengths">
-                    <h3>Core stack</h3>
-                    <ul class="skill-cloud">
-                        <li>React</li>
-                        <li>Vite</li>
-                        <li>TypeScript</li>
-                        <li>Tailwind CSS</li>
-                        <li>Node.js</li>
-                        <li>Express</li>
-                        <li>MongoDB</li>
-                        <li>Redis</li>
-                        <li>Cloudinary</li>
-                        <li>Paystack</li>
-                        <li>Playwright E2E</li>
-                        <li>REST API Design</li>
-                        <li>Performance</li>
-                        <li>Accessibility</li>
-                    </ul>
+                    <div class="stack-group">
+                        <h3>Frontend</h3>
+                        <ul class="skill-cloud">
+                            <li>React</li>
+                            <li>Vite</li>
+                            <li>TypeScript</li>
+                            <li>Tailwind CSS</li>
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>Responsive UX</li>
+                        </ul>
+                    </div>
 
-                    <h3>Foundations</h3>
-                    <ul class="skill-cloud">
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>JavaScript</li>
-                        <li>Responsive UX</li>
-                        <li>Git/GitHub</li>
-                    </ul>
+                    <div class="stack-group">
+                        <h3>Backend &amp; systems</h3>
+                        <ul class="skill-cloud">
+                            <li>Node.js</li>
+                            <li>Express</li>
+                            <li>MongoDB</li>
+                            <li>PostgreSQL</li>
+                            <li>Redis</li>
+                            <li>API Design</li>
+                            <li>Database Modeling</li>
+                            <li>Cloudinary</li>
+                            <li>Payment Integrations</li>
+                        </ul>
+                    </div>
 
-                    <h3>Working style</h3>
-                    <ul class="strength-list">
-                        <li>Production-ready interfaces</li>
-                        <li>Design consistency across breakpoints</li>
-                        <li>Clean architecture and maintainable code</li>
-                    </ul>
+                    <div class="stack-group">
+                        <h3>Delivery &amp; quality</h3>
+                        <ul class="skill-cloud">
+                            <li>Stripe</li>
+                            <li>Paystack</li>
+                            <li>Playwright E2E</li>
+                            <li>Performance</li>
+                            <li>Accessibility</li>
+                            <li>Git/GitHub</li>
+                        </ul>
+                    </div>
+
+                    <div class="stack-group">
+                        <h3>Working style</h3>
+                        <ul class="strength-list">
+                            <li>Production-ready interfaces</li>
+                            <li>Design consistency across breakpoints</li>
+                            <li>Clean architecture and maintainable code</li>
+                        </ul>
+                    </div>
                 </aside>
             </div>
         </section>
@@ -182,59 +201,105 @@
                     <p class="section-kicker">Selected work</p>
                     <h2>Projects that solve real user needs.</h2>
                     <p>
-                        A sample of interfaces and products I designed and built, each focused on user experience,
-                        responsiveness, and practical execution. Some are also structured to be customized and acquired.
+                        A curated mix of acquisition-ready templates, front-end concepts, and functional product builds.
+                        The goal across all of them is the same: clear UX, strong presentation, and practical execution.
                     </p>
                 </header>
 
-                <div class="projects-grid">
-                    <article class="project-card card reveal">
-                        <a href="musaChops.html" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                            <img src="img/musa-card.jpg" alt="MusaChops restaurant landing page preview" loading="lazy" decoding="async" width="1200" height="615">
-                        </a>
-                        <div class="project-content">
-                            <span class="project-badge">Acquisition-ready</span>
-                            <h3>MusaChops</h3>
-                            <p>A restaurant landing page with focused visual hierarchy and clear call-to-action flow.</p>
-                            <a href="musaChops.html" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
-                        </div>
-                    </article>
+                <div class="projects-band">
+                    <div class="projects-subhead reveal">
+                        <h3>Acquisition-ready templates</h3>
+                        <p>These are structured to be adapted for brands, founders, and businesses that want a faster route to launch.</p>
+                    </div>
 
-                    <article class="project-card card reveal">
-                        <a href="allInOneBarca.html" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                            <img src="img/barca-card.jpg" alt="Barca4L football blog preview" loading="lazy" decoding="async" width="1200" height="615">
-                        </a>
-                        <div class="project-content">
-                            <span class="project-badge">Content platform</span>
-                            <h3>Barca4L</h3>
-                            <p>A football blog platform structured for readability, content flow, and recurring engagement.</p>
-                            <a href="allInOneBarca.html" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
-                        </div>
-                    </article>
+                    <div class="projects-grid projects-grid-featured">
+                        <article class="project-card featured-project card reveal">
+                            <a href="https://northline-studio-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
+                                <img src="img/northline-card.svg" alt="Northline Studio filmmaker portfolio preview" loading="lazy" decoding="async" width="1200" height="750">
+                            </a>
+                            <div class="project-content">
+                                <span class="project-badge">Acquisition-ready</span>
+                                <p class="project-meta">Filmmaker portfolio template</p>
+                                <h3>Northline Studio</h3>
+                                <p>A director-led studio template for filmmakers who need a cinematic portfolio with premium structure and presence.</p>
+                                <a href="https://northline-studio-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
+                            </div>
+                        </article>
 
-                    <article class="project-card card reveal">
-                        <a href="https://chiq-n-grill.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                            <img src="img/chiq-card.jpg" alt="ChiQ & Grill React project preview" loading="lazy" decoding="async" width="1200" height="606">
-                        </a>
-                        <div class="project-content">
-                            <span class="project-badge">React build</span>
-                            <h3>ChiQ & Grill</h3>
-                            <p>A React-based restaurant experience with bold branding and smooth user flow.</p>
-                            <a href="https://chiq-n-grill.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
-                        </div>
-                    </article>
+                        <article class="project-card featured-project card reveal">
+                            <a href="https://maison-aureline.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
+                                <img src="img/maison-aureline-card.svg" alt="Maison Aureline jewelry and watch ecommerce preview" loading="lazy" decoding="async" width="1200" height="750">
+                            </a>
+                            <div class="project-content">
+                                <span class="project-badge">Acquisition-ready</span>
+                                <p class="project-meta">Luxury ecommerce concept</p>
+                                <h3>Maison Aureline</h3>
+                                <p>A luxury ecommerce concept for watches, bridal rings, and jewelry gifts with a concierge-first buying flow.</p>
+                                <a href="https://maison-aureline.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
 
-                    <article class="project-card card reveal">
-                        <a href="https://signalcrypt.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                            <img src="img/crypto-card.jpg" alt="Crypto Tracker app preview" loading="lazy" decoding="async" width="1200" height="614">
-                        </a>
-                        <div class="project-content">
-                            <span class="project-badge">Data product</span>
-                            <h3>SignalCrypt (Crypto Tracker)</h3>
-                            <p>A real-time crypto tracker for monitoring cryptocurrency prices with a clean data-first interface.</p>
-                            <a href="https://signalcrypt.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
-                        </div>
-                    </article>
+                <div class="projects-band projects-band-secondary">
+                    <div class="projects-subhead reveal">
+                        <h3>Execution-led builds</h3>
+                        <p>These show how I think through interface quality, responsiveness, interactions, and practical product structure.</p>
+                    </div>
+
+                    <div class="projects-grid projects-grid-secondary">
+                        <article class="project-card card reveal">
+                            <a href="https://signalcrypt.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
+                                <img src="img/crypto-card.jpg" alt="Crypto Tracker app preview" loading="lazy" decoding="async" width="1200" height="614">
+                            </a>
+                            <div class="project-content">
+                                <span class="project-badge">Data product</span>
+                                <p class="project-meta">Crypto tracker interface</p>
+                                <h3>SignalCrypt</h3>
+                                <p>A real-time crypto tracker for monitoring cryptocurrency prices with a clean data-first interface.</p>
+                                <a href="https://signalcrypt.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card card reveal">
+                            <a href="https://chiq-n-grill.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
+                                <img src="img/chiq-card.jpg" alt="ChiQ and Grill React project preview" loading="lazy" decoding="async" width="1200" height="606">
+                            </a>
+                            <div class="project-content">
+                                <span class="project-badge">React build</span>
+                                <p class="project-meta">Restaurant front-end experience</p>
+                                <h3>ChiQ &amp; Grill</h3>
+                                <p>A React-based restaurant experience with bold branding, stronger hierarchy, and a smoother customer flow.</p>
+                                <a href="https://chiq-n-grill.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card card reveal">
+                            <a href="musaChops.html" target="_blank" rel="noopener noreferrer" class="project-image-link">
+                                <img src="img/musa-card.jpg" alt="MusaChops restaurant landing page preview" loading="lazy" decoding="async" width="1200" height="615">
+                            </a>
+                            <div class="project-content">
+                                <span class="project-badge">Concept build</span>
+                                <p class="project-meta">Restaurant concept page</p>
+                                <h3>MusaChops</h3>
+                                <p>A restaurant concept page sharpened around visual hierarchy, clearer actions, and a stronger mobile experience.</p>
+                                <a href="musaChops.html" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card card reveal">
+                            <a href="allInOneBarca.html" target="_blank" rel="noopener noreferrer" class="project-image-link">
+                                <img src="img/barca-card.jpg" alt="Barca4L football blog preview" loading="lazy" decoding="async" width="1200" height="615">
+                            </a>
+                            <div class="project-content">
+                                <span class="project-badge">Fun project</span>
+                                <p class="project-meta">Editorial fan build</p>
+                                <h3>Barca4L</h3>
+                                <p>A Barcelona fan blog project built around readable editorial flow, mobile interactions, and polished UI states.</p>
+                                <a href="allInOneBarca.html" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>

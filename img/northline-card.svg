@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Northline Studio project preview">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#241d1d"/>
+      <stop offset="22%" stop-color="#171314"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15171d"/>
+      <stop offset="100%" stop-color="#0d0f12"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f04b63"/>
+      <stop offset="100%" stop-color="#7d2f40"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="52%" r="38%">
+      <stop offset="0%" stop-color="#d3b476" stop-opacity="0.9"/>
+      <stop offset="65%" stop-color="#8b7448" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#8b7448" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="98" fill="#2b2424"/>
+  <rect y="98" width="1200" height="1" fill="#4a3c3d"/>
+
+  <circle cx="60" cy="49" r="22" fill="none" stroke="#605253" stroke-width="1.5"/>
+  <rect x="49" y="38" width="22" height="22" rx="4" fill="none" stroke="#f04b63" stroke-width="1.6"/>
+  <rect x="54" y="43" width="12" height="12" rx="1.5" fill="none" stroke="#f04b63" stroke-width="1.2"/>
+  <line x1="60" y1="43" x2="60" y2="55" stroke="#f04b63" stroke-width="1"/>
+  <line x1="54" y1="49" x2="66" y2="49" stroke="#f04b63" stroke-width="1"/>
+
+  <text x="96" y="26" fill="#8f8887" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="4">DIRECTOR-LED STUDIO</text>
+  <text x="96" y="58" fill="#f5f3f2" font-family="Arial, Helvetica, sans-serif" font-size="28" letter-spacing="2">Northline</text>
+  <text x="236" y="58" fill="#f04b63" font-family="Arial, Helvetica, sans-serif" font-size="28" letter-spacing="4">Studio</text>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="3">
+    <text x="815" y="45" fill="#f04b63">FILMS</text>
+    <text x="895" y="45" fill="#c8c0bf">STORY</text>
+    <text x="980" y="45" fill="#c8c0bf">JOURNAL</text>
+    <text x="1090" y="45" fill="#c8c0bf">CONTACT</text>
+  </g>
+  <rect x="815" y="57" width="46" height="1.6" fill="url(#line)"/>
+
+  <text x="40" y="175" fill="#727272" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="5">SELECTED FILMS</text>
+  <text x="40" y="245" fill="#f6f5f4" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="500">
+    <tspan x="40" dy="0">Features, shorts, series,</tspan>
+    <tspan x="40" dy="68">and commercial work.</tspan>
+  </text>
+
+  <text x="40" y="430" fill="#8b8b8d" font-family="Arial, Helvetica, sans-serif" font-size="22">
+    <tspan x="40" dy="0">A director portfolio concept with a cinematic system, restrained motion,</tspan>
+    <tspan x="40" dy="38">and a presentation style built for films, series, and studio identity.</tspan>
+  </text>
+
+  <g transform="translate(40 540)">
+    <rect width="545" height="170" rx="24" fill="url(#panel)" stroke="#24262d"/>
+    <rect x="18" y="18" width="36" height="22" rx="11" fill="#101114" stroke="#31333a"/>
+    <rect x="66" y="18" width="60" height="22" rx="11" fill="#101114" stroke="#31333a"/>
+    <text x="36" y="34" fill="#b9bcc3" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" letter-spacing="2">01</text>
+    <text x="96" y="34" fill="#b9bcc3" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" letter-spacing="3">2024</text>
+    <rect x="20" y="95" width="110" height="4" rx="2" fill="#292d35"/>
+    <rect x="20" y="76" width="130" height="1.2" fill="#393d46"/>
+    <polygon points="210,170 338,54 455,54 326,170" fill="#1f2128"/>
+    <circle cx="418" cy="66" r="126" fill="url(#glow)"/>
+    <polygon points="441,170 516,120 585,120 548,170" fill="#5f5235" opacity="0.72"/>
+  </g>
+
+  <g transform="translate(615 540)">
+    <rect width="545" height="170" rx="24" fill="url(#panel)" stroke="#24262d"/>
+    <rect x="18" y="18" width="36" height="22" rx="11" fill="#101114" stroke="#31333a"/>
+    <rect x="66" y="18" width="60" height="22" rx="11" fill="#101114" stroke="#31333a"/>
+    <text x="36" y="34" fill="#b9bcc3" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" letter-spacing="2">02</text>
+    <text x="96" y="34" fill="#b9bcc3" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" letter-spacing="3">2023</text>
+    <circle cx="84" cy="170" r="110" fill="#232630"/>
+    <polygon points="160,170 280,5 357,5 238,170" fill="#413b2f" opacity="0.65"/>
+    <rect x="400" y="30" width="146" height="4" rx="2" fill="#7d6a48"/>
+    <rect x="350" y="63" width="190" height="1.2" fill="#363840"/>
+    <polygon points="436,170 505,58 575,58 507,170" fill="#1c1e24"/>
+  </g>
+</svg>

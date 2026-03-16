@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Maison Aureline project preview">
+  <defs>
+    <linearGradient id="shell" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d241d"/>
+      <stop offset="45%" stop-color="#111216"/>
+      <stop offset="100%" stop-color="#25272c"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f0e7db"/>
+      <stop offset="100%" stop-color="#ece3d4"/>
+    </linearGradient>
+    <linearGradient id="watchFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#121215"/>
+      <stop offset="100%" stop-color="#221417"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#876a63"/>
+      <stop offset="55%" stop-color="#c0a39c"/>
+      <stop offset="100%" stop-color="#6c4c4f"/>
+    </linearGradient>
+    <radialGradient id="warmGlow" cx="22%" cy="10%" r="70%">
+      <stop offset="0%" stop-color="#5a4631" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#5a4631" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#shell)"/>
+  <rect width="1200" height="46" fill="#15110e"/>
+  <rect y="46" width="1200" height="90" fill="url(#cream)"/>
+  <rect width="1200" height="750" fill="url(#warmGlow)"/>
+
+  <text x="34" y="30" fill="#efe2c9" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="4">FINE WATCHES, BRIDAL RINGS, AND JEWELRY GIFTS WITH CONCIERGE-LED SERVICE.</text>
+  <text x="922" y="30" fill="#bca47a" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="4">NOW SERVING CLIENTS WORLDWIDE.</text>
+
+  <text x="62" y="78" fill="#9e9488" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="5">MAISON</text>
+  <text x="62" y="112" fill="#212123" font-family="Arial, Helvetica, sans-serif" font-size="32">Aureline</text>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="15">
+    <text x="361" y="89" fill="#4e4d4e">Collections</text>
+    <text x="458" y="89" fill="#4e4d4e">Catalog</text>
+    <text x="534" y="89" fill="#4e4d4e">Service</text>
+    <text x="606" y="89" fill="#4e4d4e">Concierge</text>
+  </g>
+
+  <rect x="888" y="57" width="135" height="38" rx="19" fill="#f7f1e8" stroke="#cfc5b7"/>
+  <rect x="1036" y="55" width="115" height="42" rx="21" fill="#11100d"/>
+  <text x="955" y="81" fill="#1e1a17" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle">Call concierge</text>
+  <text x="1093" y="82" fill="#f7f0e5" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle">Selection</text>
+
+  <rect y="136" width="1200" height="614" fill="#0f1014" opacity="0.18"/>
+
+  <g transform="translate(62 230)">
+    <rect width="286" height="30" rx="15" fill="#2d2924" stroke="#74614a"/>
+    <text x="144" y="20" fill="#ece1c6" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" letter-spacing="4">FINE WATCHES AND JEWELRY</text>
+
+    <text x="0" y="110" fill="#f5efe7" font-family="Georgia, 'Times New Roman', serif" font-size="64">Maison Aureline</text>
+    <text x="0" y="162" fill="#f4efe9" font-family="Arial, Helvetica, sans-serif" font-size="18">
+      <tspan x="0" dy="0">A refined boutique for timepieces, bridal rings, gold jewelry,</tspan>
+      <tspan x="0" dy="30">and heirloom gifts curated for clients who want the product,</tspan>
+      <tspan x="0" dy="30">presentation, and service to feel equally elevated.</tspan>
+    </text>
+
+    <rect x="0" y="245" width="180" height="42" rx="21" fill="#c99c5a"/>
+    <rect x="190" y="245" width="160" height="42" rx="21" fill="none" stroke="#393641"/>
+    <text x="90" y="272" fill="#161310" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle">Shop the collection</text>
+    <text x="270" y="272" fill="#f5f1eb" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle">Speak to concierge</text>
+
+    <g transform="translate(0 330)">
+      <rect width="162" height="138" rx="20" fill="#242429" stroke="#34363d"/>
+      <rect x="177" width="162" height="138" rx="20" fill="#242429" stroke="#34363d"/>
+      <rect x="354" width="162" height="138" rx="20" fill="#242429" stroke="#34363d"/>
+      <text x="24" y="52" fill="#f5f1eb" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">48 hrs</text>
+      <text x="24" y="86" fill="#d3cbc1" font-family="Arial, Helvetica, sans-serif" font-size="17">Average concierge</text>
+      <text x="24" y="110" fill="#d3cbc1" font-family="Arial, Helvetica, sans-serif" font-size="17">reply</text>
+      <text x="201" y="52" fill="#f5f1eb" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">5 years</text>
+      <text x="201" y="86" fill="#d3cbc1" font-family="Arial, Helvetica, sans-serif" font-size="17">Timepiece warranty</text>
+      <text x="378" y="52" fill="#f5f1eb" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">1:1</text>
+      <text x="378" y="86" fill="#d3cbc1" font-family="Arial, Helvetica, sans-serif" font-size="17">Client guidance</text>
+    </g>
+  </g>
+
+  <g transform="translate(676 210)">
+    <rect x="0" y="0" width="458" height="480" rx="28" fill="#3b3b42" opacity="0.9"/>
+    <rect x="42" y="34" width="372" height="430" rx="24" fill="#0f1115"/>
+    <rect x="-24" y="78" width="300" height="30" rx="15" fill="#372d22" stroke="#7a5b3c"/>
+    <text x="126" y="98" fill="#e9d8be" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" letter-spacing="3">BRIDAL AND GIFT SOURCING AVAILABLE</text>
+
+    <g transform="translate(89 82) rotate(-12 120 190)">
+      <rect x="74" y="90" width="78" height="210" rx="20" fill="url(#metal)"/>
+      <rect x="165" y="114" width="96" height="164" rx="18" fill="url(#watchFace)" stroke="#8e746f" stroke-width="8"/>
+      <rect x="137" y="166" width="178" height="72" rx="30" fill="url(#metal)"/>
+      <circle cx="213" cy="196" r="52" fill="#2a2a2c" stroke="#9f8d86" stroke-width="3"/>
+      <line x1="213" y1="196" x2="213" y2="156" stroke="#f1ece2" stroke-width="3" stroke-linecap="round"/>
+      <line x1="213" y1="196" x2="248" y2="210" stroke="#f1ece2" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="213" cy="196" r="4" fill="#f1ece2"/>
+      <rect x="166" y="176" width="8" height="18" rx="4" fill="#d7ccc3"/>
+      <rect x="214" y="144" width="8" height="18" rx="4" fill="#d7ccc3"/>
+      <rect x="250" y="188" width="8" height="18" rx="4" fill="#d7ccc3"/>
+      <rect x="208" y="232" width="8" height="18" rx="4" fill="#d7ccc3"/>
+    </g>
+  </g>
+</svg>
