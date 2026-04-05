@@ -645,32 +645,10 @@ a {
     color: var(--text-muted);
 }
 
-.projects-band {
+.projects-showcase {
     margin-top: 1.75rem;
-}
-
-.projects-band-secondary {
-    margin-top: 2rem;
-}
-
-.projects-subhead {
-    margin-bottom: 1rem;
     display: grid;
-    gap: 0.35rem;
-    max-width: 62ch;
-}
-
-.projects-subhead h3 {
-    margin: 0;
-    color: var(--heading);
-    font-size: 1.1rem;
-    letter-spacing: -0.01em;
-}
-
-.projects-subhead p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 0.96rem;
+    gap: 1.3rem;
 }
 
 .projects-grid {
@@ -680,6 +658,14 @@ a {
     align-items: stretch;
 }
 
+.projects-grid-spotlight {
+    gap: 1.15rem;
+}
+
+.projects-grid-library {
+    gap: 1rem;
+}
+
 .project-card {
     overflow: hidden;
     display: flex;
@@ -687,11 +673,18 @@ a {
     min-height: 100%;
 }
 
-.featured-project {
+.flagship-project {
     border-color: color-mix(in srgb, var(--accent-soft) 46%, var(--border));
     box-shadow:
         0 18px 48px rgba(7, 29, 46, 0.12),
         0 0 0 1px color-mix(in srgb, var(--accent-soft) 14%, transparent);
+}
+
+.live-project {
+    border-color: color-mix(in srgb, #a855f7 38%, var(--border));
+    box-shadow:
+        0 18px 48px rgba(12, 18, 44, 0.18),
+        0 0 0 1px rgba(168, 85, 247, 0.14);
 }
 
 .project-image-link {
@@ -718,6 +711,20 @@ a {
     transition: transform 0.35s ease;
 }
 
+.project-image-frame {
+    padding: 0.95rem;
+    background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent-soft) 20%, transparent), transparent 46%),
+        linear-gradient(140deg, color-mix(in srgb, var(--bg-soft) 72%, var(--bg-elevated)), color-mix(in srgb, var(--bg-elevated) 92%, transparent));
+}
+
+.project-image-frame img {
+    object-fit: contain;
+    border-radius: calc(var(--radius-md) + 0.1rem);
+    background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+    border: 1px solid color-mix(in srgb, var(--bg-soft) 75%, var(--border));
+}
+
 .project-card:hover .project-image-link img,
 .project-card:focus-within .project-image-link img {
     transform: scale(1.05);
@@ -736,6 +743,10 @@ a {
     flex: 1;
 }
 
+.flagship-project .project-content {
+    gap: 0.72rem;
+}
+
 .project-badge {
     display: inline-flex;
     align-items: center;
@@ -751,8 +762,14 @@ a {
     padding: 0.25rem 0.52rem;
 }
 
-.featured-project .project-badge {
+.flagship-project .project-badge {
     background: color-mix(in srgb, var(--accent-soft) 22%, var(--bg-elevated));
+}
+
+.live-project .project-badge {
+    color: #f5e9ff;
+    border-color: rgba(168, 85, 247, 0.28);
+    background: linear-gradient(135deg, rgba(91, 33, 182, 0.92), rgba(192, 38, 211, 0.92));
 }
 
 .project-content h3 {
@@ -761,10 +778,19 @@ a {
     font-size: 1.08rem;
 }
 
+.flagship-project .project-content h3 {
+    font-size: 1.22rem;
+}
+
 .project-content p {
     margin: 0;
     color: var(--text-muted);
     font-size: 0.94rem;
+}
+
+.flagship-project .project-summary {
+    color: var(--text);
+    font-size: 0.98rem;
 }
 
 .project-content .project-meta {
@@ -773,6 +799,25 @@ a {
     font-weight: 700;
     letter-spacing: 0.09em;
     text-transform: uppercase;
+}
+
+.project-highlights {
+    list-style: none;
+    margin: 0.15rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.project-highlights li {
+    padding: 0.34rem 0.58rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--bg-soft) 70%, var(--border));
+    background: color-mix(in srgb, var(--bg-soft) 58%, transparent);
+    color: var(--text);
+    font-size: 0.76rem;
+    font-weight: 600;
 }
 
 .project-link {
@@ -788,6 +833,10 @@ a {
 .project-link:hover,
 .project-link:focus-visible {
     color: var(--accent);
+}
+
+.flagship-project .project-link {
+    padding-top: 0.7rem;
 }
 
 .contact-grid {
@@ -1045,8 +1094,8 @@ button:focus-visible,
         gap: 0.9rem;
     }
 
-    .projects-band-secondary {
-        margin-top: 1.7rem;
+    .projects-showcase {
+        gap: 1rem;
     }
 }
 
@@ -1147,8 +1196,8 @@ button:focus-visible,
         padding: 1rem;
     }
 
-    .projects-subhead {
-        margin-bottom: 0.9rem;
+    .projects-showcase {
+        margin-top: 1.45rem;
     }
 }
 
