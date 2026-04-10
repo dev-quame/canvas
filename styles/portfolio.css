@@ -474,15 +474,13 @@ a {
 .about-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
-    gap: 1.35rem;
+    gap: 2.4rem;
+    align-items: start;
 }
 
-.about-panel,
 .about-card,
-.studio-panel,
 .studio-card,
 .project-card,
-.contact-panel,
 .form-panel {
     background: color-mix(in srgb, var(--bg-elevated) 90%, transparent);
     border: 1px solid var(--border);
@@ -491,12 +489,16 @@ a {
 }
 
 .about-panel {
-    padding: 2.2rem;
+    padding: 0.2rem 0 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
 }
 
 .about-panel p {
     margin: 1.05rem 0 0;
     color: var(--text-muted);
+    max-width: 41rem;
 }
 
 .text-link {
@@ -513,7 +515,21 @@ a {
 }
 
 .about-card {
-    padding: 2.2rem;
+    position: relative;
+    padding: 0 0 0 2.1rem;
+    background: none;
+    border: 0;
+    box-shadow: none;
+}
+
+.about-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    width: 1px;
+    background: color-mix(in srgb, var(--accent-soft) 28%, var(--border));
 }
 
 .stack-group + .stack-group {
@@ -579,17 +595,30 @@ a {
 .studio-grid {
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
-    gap: 1.15rem;
+    gap: 2.4rem;
+    align-items: center;
 }
 
-.studio-panel,
 .studio-card {
-    padding: 2rem;
+    padding: 1.7rem 1.8rem;
+}
+
+.studio {
+    position: relative;
+    background: linear-gradient(145deg, #081827, #0c2130 48%, #0a1b28 100%);
+}
+
+.studio-panel {
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
 }
 
 .studio-panel p {
     margin-top: 0.9rem;
-    color: var(--text-muted);
+    color: rgba(228, 240, 248, 0.8);
+    max-width: 34rem;
 }
 
 .studio-list {
@@ -603,7 +632,7 @@ a {
 .studio-list li {
     position: relative;
     padding-left: 1.18rem;
-    color: var(--text-muted);
+    color: rgba(228, 240, 248, 0.82);
 }
 
 .studio-list li::before {
@@ -619,7 +648,7 @@ a {
 
 .studio-card h3 {
     margin: 0;
-    color: var(--heading);
+    color: #f4fbff;
     font-size: 1.08rem;
 }
 
@@ -628,16 +657,28 @@ a {
     padding-left: 1.12rem;
     display: grid;
     gap: 0.72rem;
-    color: var(--text-muted);
+    color: rgba(228, 240, 248, 0.82);
 }
 
 .studio-steps li::marker {
-    color: var(--accent-strong);
+    color: #74f3dd;
     font-weight: 700;
 }
 
+.studio .section-kicker,
+.studio h2 {
+    color: #f4fbff;
+}
+
+.studio-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(116, 243, 221, 0.14);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+}
+
 .projects .section-head {
-    max-width: 68ch;
+    max-width: 42rem;
 }
 
 .projects .section-head p:last-child {
@@ -646,9 +687,9 @@ a {
 }
 
 .projects-showcase {
-    margin-top: 1.75rem;
+    margin-top: 2rem;
     display: grid;
-    gap: 1.3rem;
+    gap: 2rem;
 }
 
 .projects-grid {
@@ -660,10 +701,13 @@ a {
 
 .projects-grid-spotlight {
     gap: 1.15rem;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    align-items: end;
 }
 
 .projects-grid-library {
-    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.45rem 1.15rem;
 }
 
 .project-card {
@@ -678,6 +722,10 @@ a {
     box-shadow:
         0 18px 48px rgba(7, 29, 46, 0.12),
         0 0 0 1px color-mix(in srgb, var(--accent-soft) 14%, transparent);
+}
+
+.projects-grid-spotlight .project-card:nth-child(2) {
+    margin-top: 3.25rem;
 }
 
 .live-project {
@@ -839,20 +887,56 @@ a {
     padding-top: 0.7rem;
 }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 1.1rem;
+.projects-grid-library .project-card {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
 }
 
-.contact-panel,
+.projects-grid-library .project-image-link {
+    border-bottom: 0;
+    border-radius: calc(var(--radius-lg) + 0.05rem);
+}
+
+.projects-grid-library .project-content {
+    padding: 0.95rem 0.1rem 0;
+}
+
+.projects-grid-library .project-badge {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+}
+
+.projects-grid-library .project-highlights {
+    display: none;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 2.4rem;
+    align-items: start;
+}
+
 .form-panel {
     padding: 2rem;
+    border-color: color-mix(in srgb, var(--accent-soft) 18%, var(--border));
+}
+
+.contact-panel {
+    padding: 0.2rem 0 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
 }
 
 .contact-panel p {
     margin-top: 0.9rem;
     color: var(--text-muted);
+    max-width: 28rem;
 }
 
 .contact-list {
@@ -865,10 +949,9 @@ a {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    padding: 0.9rem;
-    border-radius: var(--radius-md);
-    border: 1px solid color-mix(in srgb, var(--bg-soft) 70%, var(--border));
-    background: color-mix(in srgb, var(--bg-soft) 52%, transparent);
+    padding: 0;
+    border: 0;
+    background: none;
 }
 
 .contact-item h3 {
@@ -929,12 +1012,12 @@ a {
 .social-links a {
     width: 2.2rem;
     height: 2.2rem;
-    border: 1px solid var(--border);
+    border: 0;
     border-radius: 999px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: color-mix(in srgb, var(--bg-soft) 65%, transparent);
+    background: color-mix(in srgb, var(--bg-soft) 48%, transparent);
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
@@ -1097,6 +1180,23 @@ button:focus-visible,
     .projects-showcase {
         gap: 1rem;
     }
+
+    .about-card {
+        padding: 1.7rem 0 0;
+    }
+
+    .about-card::before {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: auto;
+        width: auto;
+        height: 1px;
+    }
+
+    .projects-grid-spotlight .project-card:nth-child(2) {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 900px) {
@@ -1190,6 +1290,12 @@ button:focus-visible,
     .contact-panel,
     .form-panel {
         padding: 1.4rem;
+    }
+
+    .about-panel,
+    .studio-panel,
+    .contact-panel {
+        padding: 0;
     }
 
     .project-content {
