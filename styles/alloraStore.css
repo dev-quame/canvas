@@ -712,7 +712,13 @@ a {
 
     .gallery-card-wide,
     .gallery-card-featured {
+        grid-area: auto;
         grid-column: auto;
+    }
+
+    .gallery-store .gallery-card:nth-child(2),
+    .gallery-store .gallery-card:nth-child(3) {
+        grid-area: auto;
     }
 }
 
