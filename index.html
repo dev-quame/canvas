@@ -1,402 +1,744 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quamina Elvin is a full-stack software developer building scalable web systems, robust APIs, and production-ready applications for businesses and teams.">
-    <meta name="author" content="Quamina Elvin">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#081a26">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-CU/oCbZJbyZ35ehoAxbujbDeeLkvoBz/39E6rcKRCxU='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://canvas-api-9y7i.onrender.com; base-uri 'self'; form-action 'self' https://canvas-api-9y7i.onrender.com; upgrade-insecure-requests">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Quamina Elvin is a full-stack software developer building scalable web systems, robust APIs, and production-ready applications for businesses and teams."
+    />
+    <meta name="author" content="Quamina Elvin" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#081a26" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'sha256-CU/oCbZJbyZ35ehoAxbujbDeeLkvoBz/39E6rcKRCxU='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://canvas-api-52de.onrender.com; base-uri 'self'; form-action 'self' https://canvas-api-9y7i.onrender.com; upgrade-insecure-requests"
+    />
     <title>Quamina Elvin | Full-Stack Software Developer</title>
-    <link rel="canonical" href="https://quaminaelvin.com/">
-    <meta property="og:site_name" content="Quamina Elvin">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://quaminaelvin.com/">
-    <meta property="og:title" content="Quamina Elvin | Full-Stack Software Developer">
-    <meta property="og:description" content="Full-stack software developer building scalable web systems, robust APIs, and production-ready applications.">
-    <meta property="og:image" content="https://quaminaelvin.com/img/favicon-canvas.png">
-    <meta property="og:image:alt" content="Quamina Elvin portfolio">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Quamina Elvin | Full-Stack Software Developer">
-    <meta name="twitter:description" content="Building scalable web systems, robust APIs, and production-ready applications.">
-    <meta name="twitter:image" content="https://quaminaelvin.com/img/favicon-canvas.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/portfolio.css">
-    <link rel="icon" href="img/favicon-quamina.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://quaminaelvin.com/" />
+    <meta property="og:site_name" content="Quamina Elvin" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://quaminaelvin.com/" />
+    <meta
+      property="og:title"
+      content="Quamina Elvin | Full-Stack Software Developer"
+    />
+    <meta
+      property="og:description"
+      content="Full-stack software developer building scalable web systems, robust APIs, and production-ready applications."
+    />
+    <meta
+      property="og:image"
+      content="https://quaminaelvin.com/img/favicon-canvas.png"
+    />
+    <meta property="og:image:alt" content="Quamina Elvin portfolio" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Quamina Elvin | Full-Stack Software Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="Building scalable web systems, robust APIs, and production-ready applications."
+    />
+    <meta
+      name="twitter:image"
+      content="https://quaminaelvin.com/img/favicon-canvas.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/portfolio.css" />
+    <link rel="icon" href="img/favicon-quamina.svg" type="image/svg+xml" />
     <script type="application/ld+json" id="seo-schema">
-{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Quamina Elvin","url":"https://quaminaelvin.com/"},{"@type":"Person","name":"Quamina Elvin","url":"https://quaminaelvin.com/","jobTitle":"Full-Stack Software Developer","description":"Full-stack software developer building scalable web systems, robust APIs, and production-ready applications.","email":"mailto:quaminaelvin@gmail.com","telephone":"+233542016816","sameAs":["https://www.linkedin.com/in/elvin-quamina-adjei-b1801538a","https://github.com/dev-quame"],"knowsAbout":["Full-Stack Development","Software Systems","Web Application Architecture","Backend APIs","API Design","Database Modeling","React","TypeScript","Node.js","Express","MongoDB","PostgreSQL","Redis","Cloudinary","Stripe","Paystack","Playwright"],"worksFor":{"@type":"Organization","name":"Quamina Studio"}}]}
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "Quamina Elvin",
+            "url": "https://quaminaelvin.com/"
+          },
+          {
+            "@type": "Person",
+            "name": "Quamina Elvin",
+            "url": "https://quaminaelvin.com/",
+            "jobTitle": "Full-Stack Software Developer",
+            "description": "Full-stack software developer building scalable web systems, robust APIs, and production-ready applications.",
+            "email": "mailto:quaminaelvin@gmail.com",
+            "telephone": "+233542016816",
+            "sameAs": [
+              "https://www.linkedin.com/in/elvin-quamina-adjei-b1801538a",
+              "https://github.com/dev-quame"
+            ],
+            "knowsAbout": [
+              "Full-Stack Development",
+              "Software Systems",
+              "Web Application Architecture",
+              "Backend APIs",
+              "API Design",
+              "Database Modeling",
+              "React",
+              "TypeScript",
+              "Node.js",
+              "Express",
+              "MongoDB",
+              "PostgreSQL",
+              "Redis",
+              "Cloudinary",
+              "Stripe",
+              "Paystack",
+              "Playwright"
+            ],
+            "worksFor": { "@type": "Organization", "name": "Quamina Studio" }
+          }
+        ]
+      }
     </script>
     <script src="js/portfollio.js" defer></script>
     <script src="js/script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <div class="overlay" id="overlay" hidden></div>
 
     <header class="site-header" id="home">
-        <nav class="nav wrapper" id="nav" aria-label="Primary navigation">
-            <a class="brand" href="#home" aria-label="Go to home">
-                Quamina <span>E</span>
-            </a>
+      <nav class="nav wrapper" id="nav" aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="Go to home">
+          Quamina <span>E</span>
+        </a>
 
-            <button class="hamburger" id="hamburger" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
-                <span></span>
+        <button
+          class="hamburger"
+          id="hamburger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primaryNav"
+          aria-label="Open menu"
+        >
+          <span></span>
+        </button>
+
+        <ul class="nav-list" id="primaryNav">
+          <li><a class="nav-link" href="#home">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#projects">Projects</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+          <li>
+            <button
+              class="theme-toggle theme"
+              id="themeToggle"
+              type="button"
+              aria-pressed="true"
+            >
+              <img
+                src="img/sun.svg"
+                alt=""
+                aria-hidden="true"
+                class="light-icon"
+              />
+              <img
+                src="img/moon.svg"
+                alt=""
+                aria-hidden="true"
+                class="dark-icon"
+              />
+              <span class="theme-label">Switch theme</span>
             </button>
+          </li>
+        </ul>
+      </nav>
 
-            <ul class="nav-list" id="primaryNav">
-                <li><a class="nav-link" href="#home">Home</a></li>
-                <li><a class="nav-link" href="#about">About</a></li>
-                <li><a class="nav-link" href="#projects">Projects</a></li>
-                <li><a class="nav-link" href="#contact">Contact</a></li>
-                <li>
-                    <button class="theme-toggle theme" id="themeToggle" type="button" aria-pressed="true">
-                        <img src="img/sun.svg" alt="" aria-hidden="true" class="light-icon">
-                        <img src="img/moon.svg" alt="" aria-hidden="true" class="dark-icon">
-                        <span class="theme-label">Switch theme</span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
+      <div class="hero wrapper">
+        <p class="eyebrow">Full stack software developer</p>
+        <h1>Scalable web systems built for business outcomes.</h1>
+        <p class="hero-subtitle">
+          I design and build durable software systems and web applications with
+          strong frontend UX and dependable backend foundations. The focus is
+          long term value: robust architecture, clear user journeys, and
+          performance that holds up in production.
+        </p>
 
-        <div class="hero wrapper">
-            <p class="eyebrow">Full stack software developer</p>
-            <h1>Scalable web systems built for business outcomes.</h1>
-            <p class="hero-subtitle">
-                I design and build durable software systems and web applications with strong frontend UX and dependable backend foundations.
-                The focus is long term value: robust architecture, clear user journeys, and performance that holds up in production.
-            </p>
+        <p class="typewriter" aria-live="polite">
+          <span id="typing"></span>
+          <span class="cursor" aria-hidden="true">|</span>
+        </p>
 
-            <p class="typewriter" aria-live="polite">
-                <span id="typing"></span>
-                <span class="cursor" aria-hidden="true">|</span>
-            </p>
-
-            <div class="hero-actions">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Start a Project</a>
-            </div>
-
-            <ul class="hero-pillars" aria-label="Core value pillars">
-                <li>Classic design direction</li>
-                <li>Full stack execution</li>
-                <li>Production grade quality</li>
-            </ul>
-
-            <p class="hero-note">Open to projects and thoughtful collaborations.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Start a Project</a>
         </div>
+
+        <ul class="hero-pillars" aria-label="Core value pillars">
+          <li>Classic design direction</li>
+          <li>Full stack execution</li>
+          <li>Production grade quality</li>
+        </ul>
+
+        <p class="hero-note">Open to projects and thoughtful collaborations.</p>
+      </div>
     </header>
 
     <main id="main-content">
-        <section class="section about" id="about">
-            <div class="wrapper about-grid">
-                <div class="about-panel reveal">
-                    <p class="section-kicker">Focus</p>
-                    <h2>Built with structure and staying power.</h2>
-                    <p>
-                        I build full stack products and software systems where interface, data, and operations need to work together clearly.
-                        The approach is practical and durable: clean architecture, usable interfaces, and decisions that still make sense as the product grows.
-                    </p>
-                    <p>
-                        The work spans commerce platforms, school systems, management tools, and workflow driven products for teams that need software to do real operational work.
-                        That includes products shaped around payments, records, dashboards, approvals, and client facing journeys.
-                    </p>
-                    <p>
-                        I work across React, TypeScript, Node, Express, MongoDB, PostgreSQL, Redis, and payment integrations, choosing the stack to fit the system rather than forcing one pattern onto every build.
-                    </p>
-                    <a href="#contact" class="text-link">Start a conversation</a>
-                </div>
+      <section class="section about" id="about">
+        <div class="wrapper about-grid">
+          <div class="about-panel reveal">
+            <p class="section-kicker">Focus</p>
+            <h2>Built with structure and staying power.</h2>
+            <p>
+              I build full stack products and software systems where interface,
+              data, and operations need to work together clearly. The approach
+              is practical and durable: clean architecture, usable interfaces,
+              and decisions that still make sense as the product grows.
+            </p>
+            <p>
+              The work spans commerce platforms, school systems, management
+              tools, and workflow driven products for teams that need software
+              to do real operational work. That includes products shaped around
+              payments, records, dashboards, approvals, and client facing
+              journeys.
+            </p>
+            <p>
+              I work across React, TypeScript, Node, Express, MongoDB,
+              PostgreSQL, Redis, and payment integrations, choosing the stack to
+              fit the system rather than forcing one pattern onto every build.
+            </p>
+            <a href="#contact" class="text-link">Start a conversation</a>
+          </div>
 
-                <aside class="about-card reveal" aria-label="Skills and strengths">
-                    <div class="stack-group">
-                        <h3>Frontend</h3>
-                        <ul class="skill-cloud">
-                            <li>React</li>
-                            <li>Vite</li>
-                            <li>TypeScript</li>
-                            <li>Tailwind CSS</li>
-                            <li>HTML5</li>
-                            <li>CSS3</li>
-                            <li>JavaScript</li>
-                            <li>Responsive UX</li>
-                        </ul>
-                    </div>
-
-                    <div class="stack-group">
-                        <h3>Backend &amp; systems</h3>
-                        <ul class="skill-cloud">
-                            <li>Node.js</li>
-                            <li>Express</li>
-                            <li>MongoDB</li>
-                            <li>PostgreSQL</li>
-                            <li>Redis</li>
-                            <li>API Design</li>
-                            <li>Database Modeling</li>
-                            <li>Cloudinary</li>
-                            <li>Payment Integrations</li>
-                        </ul>
-                    </div>
-
-                    <div class="stack-group">
-                        <h3>Delivery &amp; quality</h3>
-                        <ul class="skill-cloud">
-                            <li>Stripe</li>
-                            <li>Paystack</li>
-                            <li>Playwright E2E</li>
-                            <li>Performance</li>
-                            <li>Accessibility</li>
-                            <li>Git/GitHub</li>
-                        </ul>
-                    </div>
-
-                    <div class="stack-group">
-                        <h3>Working style</h3>
-                        <ul class="strength-list">
-                            <li>Production ready interfaces</li>
-                            <li>Design consistency across breakpoints</li>
-                            <li>Clean architecture and maintainable code</li>
-                        </ul>
-                    </div>
-                </aside>
+          <aside class="about-card reveal" aria-label="Skills and strengths">
+            <div class="stack-group">
+              <h3>Frontend</h3>
+              <ul class="skill-cloud">
+                <li>React</li>
+                <li>Vite</li>
+                <li>TypeScript</li>
+                <li>Tailwind CSS</li>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>Responsive UX</li>
+              </ul>
             </div>
-        </section>
 
-        <section class="section studio" id="studio">
-            <div class="wrapper studio-grid">
-                <div class="studio-panel reveal">
-                    <p class="section-kicker">Product studio</p>
-                    <h2>Some builds are available to acquire.</h2>
-                    <p>
-                        Beyond client work, I also package finished product builds that can be adapted for real businesses without starting from zero.
-                    </p>
-                    <ul class="studio-list">
-                        <li>Solid architecture and clean codebase handover</li>
-                        <li>Fast customization for your brand and workflow</li>
-                        <li>Launch support and technical guidance</li>
-                    </ul>
-                </div>
-
-                <aside class="studio-card reveal" aria-label="Project acquisition flow">
-                    <h3>How it works</h3>
-                    <ol class="studio-steps">
-                        <li>Select a project concept aligned to your business goal.</li>
-                        <li>I tailor features, branding, and data flow to your use case.</li>
-                        <li>You receive a launch ready product with transition support.</li>
-                    </ol>
-                    <a href="#contact" class="btn btn-secondary">Discuss a project acquisition</a>
-                </aside>
+            <div class="stack-group">
+              <h3>Backend &amp; systems</h3>
+              <ul class="skill-cloud">
+                <li>Node.js</li>
+                <li>Express</li>
+                <li>MongoDB</li>
+                <li>PostgreSQL</li>
+                <li>Redis</li>
+                <li>API Design</li>
+                <li>Database Modeling</li>
+                <li>Cloudinary</li>
+                <li>Payment Integrations</li>
+              </ul>
             </div>
-        </section>
 
-        <section class="section projects" id="projects">
-            <div class="wrapper">
-                <header class="section-head">
-                    <p class="section-kicker">Selected work</p>
-                    <h2>Projects built to launch and last.</h2>
-                    <p>
-                        Live work, acquisition ready products, and polished builds across commerce, branded experiences,
-                        and interface driven projects.
-                    </p>
-                </header>
-
-                <div class="projects-showcase">
-                    <div class="projects-grid projects-grid-spotlight">
-                        <article class="project-card flagship-project live-project card reveal">
-                            <a href="https://chekkly.com" target="_blank" rel="noopener noreferrer" class="project-image-link project-image-frame">
-                                <img src="img/chekkly-card.jpg" alt="Chekkly voucher platform preview" loading="lazy" decoding="async" width="1400" height="708">
-                            </a>
-                            <div class="project-content">
-                                <span class="project-badge">Live in production</span>
-                                <p class="project-meta">Voucher commerce platform</p>
-                                <h3>Chekkly</h3>
-                                <p class="project-summary">A real production platform for buying WAEC, WASSCE, BECE, and NOVDEC checker vouchers online with mobile money and instant delivery.</p>
-                                <ul class="project-highlights" aria-label="Chekkly highlights">
-                                    <li>Live transactions</li>
-                                    <li>MoMo checkout</li>
-                                    <li>Instant delivery</li>
-                                </ul>
-                                <a href="https://chekkly.com" target="_blank" rel="noopener noreferrer" class="project-link">Visit Live Site -&gt;</a>
-                            </div>
-                        </article>
-
-                        <article class="project-card flagship-project card reveal">
-                            <a href="alloraStore.html" class="project-image-link">
-                                <img src="img/allora-home-hero.jpg" alt="Allora Store storefront preview" loading="lazy" decoding="async" width="1440" height="1200">
-                            </a>
-                            <div class="project-content">
-                                <span class="project-badge">Acquisition ready</span>
-                                <p class="project-meta">Full ecommerce build</p>
-                                <h3>Allora Store</h3>
-                                <p class="project-summary">A fully functional ecommerce website with a premium retail presentation, complete shopping flow, and an admin layer for merchandising, products, orders, and store operations.</p>
-                                <ul class="project-highlights" aria-label="Allora Store highlights">
-                                    <li>Acquisition ready</li>
-                                    <li>Robust commerce UX</li>
-                                    <li>Admin control center</li>
-                                </ul>
-                                <a href="alloraStore.html" class="project-link">View Details -&gt;</a>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="projects-grid projects-grid-library">
-                        <article class="project-card card reveal">
-                            <a href="https://northline-studio-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                                <img src="img/northline-card.svg" alt="Northline Studio filmmaker portfolio preview" loading="lazy" decoding="async" width="1200" height="750">
-                            </a>
-                            <div class="project-content">
-                                <span class="project-badge">Acquisition ready</span>
-                                <p class="project-meta">Filmmaker portfolio template</p>
-                                <h3>Northline Studio</h3>
-                                <p>A director driven studio template for filmmakers who need a cinematic portfolio with premium structure and presence.</p>
-                                <a href="https://northline-studio-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
-                            </div>
-                        </article>
-
-                        <article class="project-card card reveal">
-                            <a href="https://maison-aureline.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                                <img src="img/maison-aureline-card.svg" alt="Maison Aureline jewelry and watch ecommerce preview" loading="lazy" decoding="async" width="1200" height="750">
-                            </a>
-                            <div class="project-content">
-                                <span class="project-badge">Acquisition ready</span>
-                                <p class="project-meta">Luxury ecommerce concept</p>
-                                <h3>Maison Aureline</h3>
-                                <p>A luxury ecommerce concept for watches, bridal rings, and jewelry gifts with a concierge led buying flow.</p>
-                                <a href="https://maison-aureline.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
-                            </div>
-                        </article>
-                    
-                        <article class="project-card card reveal">
-                            <a href="https://signalcrypt.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                                <img src="img/crypto-card.jpg" alt="Crypto Tracker app preview" loading="lazy" decoding="async" width="1200" height="614">
-                            </a>
-                            <div class="project-content">
-                                <span class="project-badge">Data product</span>
-                                <p class="project-meta">Crypto tracker interface</p>
-                                <h3>SignalCrypt</h3>
-                                <p>A real time crypto tracker for monitoring cryptocurrency prices with a clean data first interface.</p>
-                                <a href="https://signalcrypt.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
-                            </div>
-                        </article>
-
-                        <article class="project-card card reveal">
-                            <a href="https://chiq-n-grill.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                                <img src="img/chiq-card.jpg" alt="ChiQ and Grill React project preview" loading="lazy" decoding="async" width="1200" height="606">
-                            </a>
-                            <div class="project-content">
-                                <span class="project-badge">React build</span>
-                                <p class="project-meta">Restaurant frontend experience</p>
-                                <h3>ChiQ &amp; Grill</h3>
-                                <p>A React based restaurant experience with bold branding, stronger hierarchy, and a smoother customer flow.</p>
-                                <a href="https://chiq-n-grill.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
-                            </div>
-                        </article>
-
-                        <article class="project-card card reveal">
-                            <a href="musaChops.html" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                                <img src="img/musa-card.jpg" alt="MusaChops restaurant landing page preview" loading="lazy" decoding="async" width="1200" height="615">
-                            </a>
-                            <div class="project-content">
-                                <span class="project-badge">Concept build</span>
-                                <p class="project-meta">Restaurant concept page</p>
-                                <h3>MusaChops</h3>
-                                <p>A restaurant concept page sharpened around visual hierarchy, clearer actions, and a stronger mobile experience.</p>
-                                <a href="musaChops.html" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
-                            </div>
-                        </article>
-
-                        <article class="project-card card reveal">
-                            <a href="allInOneBarca.html" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                                <img src="img/barca-card.jpg" alt="Barca4L football blog preview" loading="lazy" decoding="async" width="1200" height="615">
-                            </a>
-                            <div class="project-content">
-                                <span class="project-badge">Fun project</span>
-                                <p class="project-meta">Editorial fan build</p>
-                                <h3>Barca4L</h3>
-                                <p>A Barcelona fan blog project built around readable editorial flow, mobile interactions, and polished UI states.</p>
-                                <a href="allInOneBarca.html" target="_blank" rel="noopener noreferrer" class="project-link">View Project -&gt;</a>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+            <div class="stack-group">
+              <h3>Delivery &amp; quality</h3>
+              <ul class="skill-cloud">
+                <li>Stripe</li>
+                <li>Paystack</li>
+                <li>Playwright E2E</li>
+                <li>Performance</li>
+                <li>Accessibility</li>
+                <li>Git/GitHub</li>
+              </ul>
             </div>
-        </section>
 
-        <section class="section contact" id="contact">
-            <div class="wrapper contact-grid">
-                <div class="contact-panel reveal">
-                    <p class="section-kicker">Get in touch</p>
-                    <h2>Start a conversation.</h2>
-                    <p>
-                        Share the idea, the context, and where you want it to go.
-                    </p>
-
-                    <div class="contact-list">
-                        <div class="contact-item">
-                            <div class="icon"><img src="img/at.svg" alt="" aria-hidden="true"></div>
-                            <div>
-                                <h3>Email</h3>
-                                <a href="mailto:quaminaelvin@gmail.com">quaminaelvin@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="icon"><img src="img/phone.svg" alt="" aria-hidden="true"></div>
-                            <div>
-                                <h3>Phone</h3>
-                                <a href="tel:+233542016816">+233 54 2016 816</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="socials">
-                        <h3>Connect</h3>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/elvin-quamina-adjei-b1801538a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                <img src="img/linkedin-logo.svg" alt="" aria-hidden="true">
-                            </a>
-                            <a href="https://github.com/dev-quame" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                                <img src="img/github-logo.svg" alt="" aria-hidden="true">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-panel reveal">
-                    <h2>Send a message</h2>
-                    <form id="contactForm" name="message-form" method="post" autocomplete="on" data-endpoint="https://canvas-api-9y7i.onrender.com/api/forms">
-                        <p class="hidden-field">
-                            <label>Leave this field empty
-                                <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
-                            </label>
-                        </p>
-
-                        <label for="name">Full name</label>
-                        <input required id="name" name="name" type="text" minlength="2" maxlength="80" placeholder="Your name" autocomplete="name">
-
-                        <label for="email">Email address</label>
-                        <input required id="email" name="email" type="email" maxlength="120" placeholder="your@email.com" autocomplete="email">
-
-                        <label for="subject">Subject</label>
-                        <input required id="subject" name="subject" type="text" minlength="3" maxlength="120" placeholder="Project inquiry" autocomplete="organization-title">
-
-                        <label for="message">Message</label>
-                        <textarea required id="message" name="message" rows="7" minlength="20" maxlength="1500" placeholder="Tell me about your project..."></textarea>
-
-                        <button type="submit" id="submitBtn">Send Message -&gt;</button>
-                        <p id="status" role="status" aria-live="polite"></p>
-                    </form>
-                </div>
+            <div class="stack-group">
+              <h3>Working style</h3>
+              <ul class="strength-list">
+                <li>Production ready interfaces</li>
+                <li>Design consistency across breakpoints</li>
+                <li>Clean architecture and maintainable code</li>
+              </ul>
             </div>
-        </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section studio" id="studio">
+        <div class="wrapper studio-grid">
+          <div class="studio-panel reveal">
+            <p class="section-kicker">Product studio</p>
+            <h2>Some builds are available to acquire.</h2>
+            <p>
+              Beyond client work, I also package finished product builds that
+              can be adapted for real businesses without starting from zero.
+            </p>
+            <ul class="studio-list">
+              <li>Solid architecture and clean codebase handover</li>
+              <li>Fast customization for your brand and workflow</li>
+              <li>Launch support and technical guidance</li>
+            </ul>
+          </div>
+
+          <aside
+            class="studio-card reveal"
+            aria-label="Project acquisition flow"
+          >
+            <h3>How it works</h3>
+            <ol class="studio-steps">
+              <li>Select a project concept aligned to your business goal.</li>
+              <li>
+                I tailor features, branding, and data flow to your use case.
+              </li>
+              <li>
+                You receive a launch ready product with transition support.
+              </li>
+            </ol>
+            <a href="#contact" class="btn btn-secondary"
+              >Discuss a project acquisition</a
+            >
+          </aside>
+        </div>
+      </section>
+
+      <section class="section projects" id="projects">
+        <div class="wrapper">
+          <header class="section-head">
+            <p class="section-kicker">Selected work</p>
+            <h2>Projects built to launch and last.</h2>
+            <p>
+              Live work, acquisition ready products, and polished builds across
+              commerce, branded experiences, and interface driven projects.
+            </p>
+          </header>
+
+          <div class="projects-showcase">
+            <div class="projects-grid projects-grid-spotlight">
+              <article
+                class="project-card flagship-project live-project card reveal"
+              >
+                <a
+                  href="https://chekkly.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-image-link project-image-frame"
+                >
+                  <img
+                    src="img/chekkly-card.jpg"
+                    alt="Chekkly voucher platform preview"
+                    loading="lazy"
+                    decoding="async"
+                    width="1400"
+                    height="708"
+                  />
+                </a>
+                <div class="project-content">
+                  <span class="project-badge">Live in production</span>
+                  <p class="project-meta">Voucher commerce platform</p>
+                  <h3>Chekkly</h3>
+                  <p class="project-summary">
+                    A real production platform for buying WAEC, WASSCE, BECE,
+                    and NOVDEC checker vouchers online with mobile money and
+                    instant delivery.
+                  </p>
+                  <ul
+                    class="project-highlights"
+                    aria-label="Chekkly highlights"
+                  >
+                    <li>Live transactions</li>
+                    <li>MoMo checkout</li>
+                    <li>Instant delivery</li>
+                  </ul>
+                  <a
+                    href="https://chekkly.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                    >Visit Live Site -&gt;</a
+                  >
+                </div>
+              </article>
+
+              <article class="project-card flagship-project card reveal">
+                <a href="alloraStore.html" class="project-image-link">
+                  <img
+                    src="img/allora-home-hero.jpg"
+                    alt="Allora Store storefront preview"
+                    loading="lazy"
+                    decoding="async"
+                    width="1440"
+                    height="1200"
+                  />
+                </a>
+                <div class="project-content">
+                  <span class="project-badge">Acquisition ready</span>
+                  <p class="project-meta">Full ecommerce build</p>
+                  <h3>Allora Store</h3>
+                  <p class="project-summary">
+                    A fully functional ecommerce website with a premium retail
+                    presentation, complete shopping flow, and an admin layer for
+                    merchandising, products, orders, and store operations.
+                  </p>
+                  <ul
+                    class="project-highlights"
+                    aria-label="Allora Store highlights"
+                  >
+                    <li>Acquisition ready</li>
+                    <li>Robust commerce UX</li>
+                    <li>Admin control center</li>
+                  </ul>
+                  <a href="alloraStore.html" class="project-link"
+                    >View Details -&gt;</a
+                  >
+                </div>
+              </article>
+            </div>
+
+            <div class="projects-grid projects-grid-library">
+              <article class="project-card card reveal">
+                <a
+                  href="https://northline-studio-rho.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-image-link"
+                >
+                  <img
+                    src="img/northline-card.svg"
+                    alt="Northline Studio filmmaker portfolio preview"
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height="750"
+                  />
+                </a>
+                <div class="project-content">
+                  <span class="project-badge">Acquisition ready</span>
+                  <p class="project-meta">Filmmaker portfolio template</p>
+                  <h3>Northline Studio</h3>
+                  <p>
+                    A director driven studio template for filmmakers who need a
+                    cinematic portfolio with premium structure and presence.
+                  </p>
+                  <a
+                    href="https://northline-studio-rho.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                    >View Project -&gt;</a
+                  >
+                </div>
+              </article>
+
+              <article class="project-card card reveal">
+                <a
+                  href="https://maison-aureline.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-image-link"
+                >
+                  <img
+                    src="img/maison-aureline-card.svg"
+                    alt="Maison Aureline jewelry and watch ecommerce preview"
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height="750"
+                  />
+                </a>
+                <div class="project-content">
+                  <span class="project-badge">Acquisition ready</span>
+                  <p class="project-meta">Luxury ecommerce concept</p>
+                  <h3>Maison Aureline</h3>
+                  <p>
+                    A luxury ecommerce concept for watches, bridal rings, and
+                    jewelry gifts with a concierge led buying flow.
+                  </p>
+                  <a
+                    href="https://maison-aureline.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                    >View Project -&gt;</a
+                  >
+                </div>
+              </article>
+
+              <article class="project-card card reveal">
+                <a
+                  href="https://signalcrypt.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-image-link"
+                >
+                  <img
+                    src="img/crypto-card.jpg"
+                    alt="Crypto Tracker app preview"
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height="614"
+                  />
+                </a>
+                <div class="project-content">
+                  <span class="project-badge">Data product</span>
+                  <p class="project-meta">Crypto tracker interface</p>
+                  <h3>SignalCrypt</h3>
+                  <p>
+                    A real time crypto tracker for monitoring cryptocurrency
+                    prices with a clean data first interface.
+                  </p>
+                  <a
+                    href="https://signalcrypt.netlify.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                    >View Project -&gt;</a
+                  >
+                </div>
+              </article>
+
+              <article class="project-card card reveal">
+                <a
+                  href="https://chiq-n-grill.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-image-link"
+                >
+                  <img
+                    src="img/chiq-card.jpg"
+                    alt="ChiQ and Grill React project preview"
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height="606"
+                  />
+                </a>
+                <div class="project-content">
+                  <span class="project-badge">React build</span>
+                  <p class="project-meta">Restaurant frontend experience</p>
+                  <h3>ChiQ &amp; Grill</h3>
+                  <p>
+                    A React based restaurant experience with bold branding,
+                    stronger hierarchy, and a smoother customer flow.
+                  </p>
+                  <a
+                    href="https://chiq-n-grill.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                    >View Project -&gt;</a
+                  >
+                </div>
+              </article>
+
+              <article class="project-card card reveal">
+                <a
+                  href="musaChops.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-image-link"
+                >
+                  <img
+                    src="img/musa-card.jpg"
+                    alt="MusaChops restaurant landing page preview"
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height="615"
+                  />
+                </a>
+                <div class="project-content">
+                  <span class="project-badge">Concept build</span>
+                  <p class="project-meta">Restaurant concept page</p>
+                  <h3>MusaChops</h3>
+                  <p>
+                    A restaurant concept page sharpened around visual hierarchy,
+                    clearer actions, and a stronger mobile experience.
+                  </p>
+                  <a
+                    href="musaChops.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                    >View Project -&gt;</a
+                  >
+                </div>
+              </article>
+
+              <article class="project-card card reveal">
+                <a
+                  href="allInOneBarca.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-image-link"
+                >
+                  <img
+                    src="img/barca-card.jpg"
+                    alt="Barca4L football blog preview"
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height="615"
+                  />
+                </a>
+                <div class="project-content">
+                  <span class="project-badge">Fun project</span>
+                  <p class="project-meta">Editorial fan build</p>
+                  <h3>Barca4L</h3>
+                  <p>
+                    A Barcelona fan blog project built around readable editorial
+                    flow, mobile interactions, and polished UI states.
+                  </p>
+                  <a
+                    href="allInOneBarca.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                    >View Project -&gt;</a
+                  >
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="wrapper contact-grid">
+          <div class="contact-panel reveal">
+            <p class="section-kicker">Get in touch</p>
+            <h2>Start a conversation.</h2>
+            <p>Share the idea, the context, and where you want it to go.</p>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="icon">
+                  <img src="img/at.svg" alt="" aria-hidden="true" />
+                </div>
+                <div>
+                  <h3>Email</h3>
+                  <a href="mailto:quaminaelvin@gmail.com"
+                    >quaminaelvin@gmail.com</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon">
+                  <img src="img/phone.svg" alt="" aria-hidden="true" />
+                </div>
+                <div>
+                  <h3>Phone</h3>
+                  <a href="tel:+233542016816">+233 54 2016 816</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="socials">
+              <h3>Connect</h3>
+              <div class="social-links">
+                <a
+                  href="https://www.linkedin.com/in/elvin-quamina-adjei-b1801538a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <img src="img/linkedin-logo.svg" alt="" aria-hidden="true" />
+                </a>
+                <a
+                  href="https://github.com/dev-quame"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <img src="img/github-logo.svg" alt="" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-panel reveal">
+            <h2>Send a message</h2>
+            <form
+              id="contactForm"
+              name="message-form"
+              method="post"
+              autocomplete="on"
+              data-endpoint="https://canvas-api-9y7i.onrender.com/api/forms"
+            >
+              <p class="hidden-field">
+                <label
+                  >Leave this field empty
+                  <input
+                    type="text"
+                    name="bot-field"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </label>
+              </p>
+
+              <label for="name">Full name</label>
+              <input
+                required
+                id="name"
+                name="name"
+                type="text"
+                minlength="2"
+                maxlength="80"
+                placeholder="Your name"
+                autocomplete="name"
+              />
+
+              <label for="email">Email address</label>
+              <input
+                required
+                id="email"
+                name="email"
+                type="email"
+                maxlength="120"
+                placeholder="your@email.com"
+                autocomplete="email"
+              />
+
+              <label for="subject">Subject</label>
+              <input
+                required
+                id="subject"
+                name="subject"
+                type="text"
+                minlength="3"
+                maxlength="120"
+                placeholder="Project inquiry"
+                autocomplete="organization-title"
+              />
+
+              <label for="message">Message</label>
+              <textarea
+                required
+                id="message"
+                name="message"
+                rows="7"
+                minlength="20"
+                maxlength="1500"
+                placeholder="Tell me about your project..."
+              ></textarea>
+
+              <button type="submit" id="submitBtn">Send Message -&gt;</button>
+              <p id="status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Quamina Studio</p>
+      <p>&copy; 2026 Quamina Studio</p>
     </footer>
-</body>
+  </body>
 </html>
