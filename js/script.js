@@ -9,7 +9,7 @@
     return;
   }
 
-  const defaultEndpoint = "https://canvas-api-9y7i.onrender.com/api/forms";
+  const defaultEndpoint = "https://canvas-api-52de.onrender.com/api/forms";
   const endpoint = (form.dataset.endpoint || defaultEndpoint).trim() || defaultEndpoint;
   const healthEndpoint = endpoint.replace(/\/api\/forms\/?$/i, "/api/health");
   const submitLabel = "Send Message ->";

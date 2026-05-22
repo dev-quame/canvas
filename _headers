@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-CU/oCbZJbyZ35ehoAxbujbDeeLkvoBz/39E6rcKRCxU='; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https: data:; connect-src 'self' https://canvas-api-9y7i.onrender.com; form-action 'self' https://canvas-api-9y7i.onrender.com; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-CU/oCbZJbyZ35ehoAxbujbDeeLkvoBz/39E6rcKRCxU='; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https: data:; connect-src 'self' https://canvas-api-52de.onrender.com; form-action 'self' https://canvas-api-52de.onrender.com; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
   Referrer-Policy: strict-origin-when-cross-origin
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
