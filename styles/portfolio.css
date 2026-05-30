@@ -773,9 +773,22 @@ a {
     border: 1px solid color-mix(in srgb, var(--bg-soft) 75%, var(--border));
 }
 
+.project-image-contain {
+    background: color-mix(in srgb, var(--bg-soft) 78%, #ffffff);
+}
+
+.project-image-contain img {
+    object-fit: contain;
+}
+
 .project-card:hover .project-image-link img,
 .project-card:focus-within .project-image-link img {
     transform: scale(1.05);
+}
+
+.project-card:hover .project-image-contain img,
+.project-card:focus-within .project-image-contain img {
+    transform: none;
 }
 
 .project-card:hover .project-image-link::after,
