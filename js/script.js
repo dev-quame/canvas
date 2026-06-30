@@ -171,7 +171,7 @@
           response.status === 429
             ? "Too many requests right now. Please try again in a moment."
             : response.status === 403
-              ? "Request blocked by CORS. Add your GitHub Pages domain to the API allowlist."
+              ? "Sorry, your message could not be sent right now. Please try again later or email me directly."
               : response.status >= 500
                 ? "Server is unavailable right now. If this is Render free tier sleep, wait a moment and try again."
             : "Unable to send your message right now. Please try again.";
@@ -188,7 +188,7 @@
       if (error.name === "AbortError") {
         setStatus("error", "Request timed out. Server may be waking from sleep. Please wait 20-30 seconds and try again.");
       } else if (error instanceof TypeError) {
-        setStatus("error", "Network or CORS error. Verify the API URL and Render CORS allowlist for your GitHub Pages domain.");
+        setStatus("error", "Sorry, your message could not be sent right now. Please check your connection or email me directly.");
       } else {
         setStatus("error", error.message || "Network error. Please try again.");
       }
